@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   match '/support',     to: 'static_pages#support', via: 'get'
 
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  get    'logout'  => 'sessions#destroy'
+  delete 'logout'  => 'sessions#destroy'
 
   # DEPRECATION GRAVEYARD
+  
 end
