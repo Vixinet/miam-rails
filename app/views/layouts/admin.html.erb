@@ -8,10 +8,42 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "Ichy", admin_url, class: 'navbar-brand' %>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Merchants", admin_merchants_url %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Exit", logout_url %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="container-fluid">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+    </header>
+
+    <main class="container-fluid">
+      <%= yield %>
+    </main>
+
+    <% if Rails.env.development? %>
+    <footer class="navbar navbar-default navbar-fixed-bottom">
+        <%= debug(params)  %>
+    </footer>
     <% end %>
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
