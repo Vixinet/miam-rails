@@ -10,12 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021220034) do
+ActiveRecord::Schema.define(version: 20161022001121) do
 
   create_table "merchants", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "name"
+    t.string   "title"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "website"
+    t.string   "address"
+    t.string   "city"
+    t.string   "zipcode"
+    t.integer  "price"
+    t.float    "delivery_cost"
+    t.float    "free_delivery_limit"
+    t.string   "small_order_surcharge"
+    t.float    "maximum_distance"
+    t.float    "long_delivery_surcharge"
+    t.         "status",                  default: "editing"
   end
 
   create_table "users", force: :cascade do |t|

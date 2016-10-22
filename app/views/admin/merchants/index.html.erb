@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>
   Merchants
   <%= link_to 'New Merchant', new_admin_merchant_path, class: 'btn btn-default'  %>
@@ -9,13 +7,26 @@
   <thead>
     <tr>
       <th>#</th>
-      <th colspan="3">Name</th>
+      <th>Status</th>
+      <th>Name</th>
+      <th colspan="2"> </th>
     </tr>
   </thead>
   <tbody>
     <% @merchants.each do |merchant| %>
       <tr>
         <td><%= merchant.id %></td>
+        <td>
+          <% if merchant.editing? %>
+            <span class="label label-default">editing</span>
+          <% end %>
+          <% if merchant.live? %>
+            <span class="label label-success">live</span>
+          <% end %>
+          <% if merchant.offline? %>
+            <span class="label label-danger">Offline</span>
+          <% end %>
+        </td>
         <td><%= merchant.name %></td>
         <td class="text-right">
           <%= link_to 'Edit', edit_admin_merchant_path(merchant), class: 'btn btn-default btn-xs' %>
