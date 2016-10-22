@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 20161022001121) do
 
   create_table "merchants", force: :cascade do |t|
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "name"
     t.string   "title"
     t.string   "email"
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 20161022001121) do
     t.integer  "price"
     t.float    "delivery_cost"
     t.float    "free_delivery_limit"
-    t.string   "small_order_surcharge"
+    t.float    "small_order_surcharge"
     t.float    "maximum_distance"
     t.float    "long_delivery_surcharge"
-    t.         "status",                  default: "editing"
+    t.integer  "status"
   end
 
   create_table "users", force: :cascade do |t|

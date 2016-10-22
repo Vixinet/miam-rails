@@ -10,7 +10,7 @@ class AddColumnsToMerchant < ActiveRecord::Migration[5.0]
     add_column :merchants, :price, :integer
     add_column :merchants, :delivery_cost, :float
     add_column :merchants, :free_delivery_limit, :float
-    add_column :merchants, :small_order_surcharge, :string
+    add_column :merchants, :small_order_surcharge, :float
     add_column :merchants, :maximum_distance, :float
     add_column :merchants, :long_delivery_surcharge, :float
   end
