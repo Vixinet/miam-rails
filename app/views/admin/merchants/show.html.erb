@@ -1,17 +1,61 @@
-<h1>
-  <%= @merchant.name %>
-  <%= link_to 'Edit Merchant', edit_admin_merchant_path(@merchant), class: 'btn btn-default'  %>
-</h1>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @merchant.business_name %> #<%= @merchant.id %></div>
+  <div class="panel-body">
+  	<p class="lead">Business ID</p>
+  	<p><%= @merchant.business_id %></p>
 
-<div>
-Name= <%= @merchant.name %>
+  	<p class="lead">VAT</p>
+  	<p><%= @merchant.vat %></p>
+
+  	<p class="lead">Address</p>
+  	<p><%= @merchant.address %><br/>
+  	<%= "#{@merchant.zip_code} #{@merchant.city}" %></p>
+  	
+  	<p class="lead">Contact person</p>
+  	<p><%= @merchant.contact_person %></p>
+  	
+  	<p class="lead">Phone</p>
+  	<p><%= @merchant.phone %></p>
+  	
+  	<p class="lead">Email</p>
+  	<p><a href="mailto:<%= @merchant.email %>"><%= @merchant.email %></a></p>
+  </div>
+  <div class="panel-heading">Venues</div>
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+      <th>Name</th>
+      <th></th>
+    </tr>
+    <% if @merchant.venues.each do |venue| %>
+      <tr>
+        <td><%= venue.id %></td>
+        <td>
+          <% if venue.editing? %>
+            <span class="label label-default">editing</span>
+          <% end %>
+          <% if venue.live? %>
+            <span class="label label-success">live</span>
+          <% end %>
+          <% if venue.offline? %>
+            <span class="label label-danger">Offline</span>
+          <% end %>
+        </td>
+        <td><%= venue.name %></td>
+        <td class="text-right">
+          <%= link_to 'Show', admin_venue_path(venue), class: "btn btn-xs btn-default" %>
+          <%= link_to 'Edit', edit_admin_venue_path(venue), class: "btn btn-xs btn-primary" %>
+        </td>
+      </tr>
+    <% end.empty? %>
+      <tr><td colspan="4">No venues</td></tr>
+    <% end %>
+  </table>
+  <div class="panel-footer">
+  	<%= link_to 'Edit', edit_admin_merchant_path(@merchant), class: 'btn btn-primary'  %>
+  	<%= link_to 'Destroy', admin_merchant_path(@merchant), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-danger" %>
+  </div>
 </div>
-<div>
-Title= <%= @merchant.title %>
-</div>
-<div>
-delivery_cost= <%= @merchant.delivery_cost %>
-</div>
-<div>
-free_delivery_limit= <%= @merchant.free_delivery_limit %>
-</div>
+
+

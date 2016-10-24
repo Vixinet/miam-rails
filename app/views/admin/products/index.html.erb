@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Product</div>
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+      <th>Label</th>
+      <th>Base Price</th>
+      <th>Order</th>
+      <th>Venue</th>
+      <th>Product Group</th>
+      <th></th>
+    </tr>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td>
+          <% if product.live? %>
+            <span class="label label-success">live</span>
+          <% end %>
+          <% if product.offline? %>
+            <span class="label label-danger">Offline</span>
+          <% end %>
+        </td>
+        <td><%= product.label %></td>
+        <td><%= product.base_price %></td>
+        <td><%= product.order %></td>
+        <td><%= link_to product.product_group.venue.name, admin_venue_path(product.product_group.venue) %></td>
+        <td><%= link_to product.product_group.label, admin_product_group_path(product.product_group) %></td>
+        <td class="text-right">
+          <%= link_to 'Show', admin_product_path(product), class: "btn btn-xs btn-default" %>
+          <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-xs btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

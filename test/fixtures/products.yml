@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_group: one
+  label: MyString
+  description: MyString
+  base_price: 1.5
+  status: 1
+  order: 1
+
+two:
+  product_group: two
+  label: MyString
+  description: MyString
+  base_price: 1.5
+  status: 1
+  order: 1

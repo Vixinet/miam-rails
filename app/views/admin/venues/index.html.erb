@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Venues</div>
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Website</th>
+      <th>Merchant</th>
+      <th></th>
+    </tr>
+    <% @venues.each do |venue| %>
+      <tr>
+        <td><%= venue.id %></td>
+        <td>
+          <% if venue.editing? %>
+            <span class="label label-default">editing</span>
+          <% end %>
+          <% if venue.live? %>
+            <span class="label label-success">live</span>
+          <% end %>
+          <% if venue.offline? %>
+            <span class="label label-danger">Offline</span>
+          <% end %>
+        </td>
+        <td><%= venue.name %></td>
+        <td><%= venue.phone %></td>
+        <td><a href="<%= venue.website_url_with_assumed_protocol %>" target="_blank">www</a></td>
+        <td><%= link_to venue.merchant.business_name, admin_merchant_path(venue.merchant) %></td>
+        <td class="text-right">
+          <%= link_to 'Show', admin_venue_path(venue), class: "btn btn-xs btn-default" %>
+          <%= link_to 'Edit', edit_admin_venue_path(venue), class: "btn btn-xs btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

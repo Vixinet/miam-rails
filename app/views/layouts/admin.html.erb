@@ -21,9 +21,19 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            <li><%= link_to "Venues", admin_venues_url %></li>
             <li><%= link_to "Merchants", admin_merchants_url %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown-new">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Create <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Venue', new_admin_venue_path %></li>
+              <li><%= link_to 'Merchant', new_admin_merchant_path %></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">App User Actions</a></li>
+            </ul>
+          </li>
             <li><%= link_to "Exit", logout_url %></li>
           </ul>
         </div>

@@ -10,26 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022001121) do
+ActiveRecord::Schema.define(version: 20161024130643) do
 
   create_table "merchants", force: :cascade do |t|
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "name"
-    t.string   "title"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "website"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "business_name"
+    t.string   "business_id"
+    t.string   "vat"
     t.string   "address"
     t.string   "city"
-    t.string   "zipcode"
-    t.integer  "price"
-    t.float    "delivery_cost"
-    t.float    "free_delivery_limit"
-    t.float    "small_order_surcharge"
-    t.float    "maximum_distance"
-    t.float    "long_delivery_surcharge"
+    t.string   "zip_code"
+    t.string   "contact_person"
+    t.string   "phone"
+    t.string   "email"
+  end
+
+  create_table "product_groups", force: :cascade do |t|
+    t.string   "label"
+    t.string   "description"
+    t.integer  "order"
+    t.integer  "venue_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "status"
+    t.index ["venue_id"], name: "index_product_groups_on_venue_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer  "product_group_id"
+    t.string   "label"
+    t.string   "description"
+    t.float    "base_price"
+    t.integer  "status"
+    t.integer  "order"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["product_group_id"], name: "index_products_on_product_group_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,6 +56,18 @@ ActiveRecord::Schema.define(version: 20161022001121) do
     t.boolean  "admin",           default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.integer  "status"
+    t.string   "name"
+    t.string   "title"
+    t.string   "phone"
+    t.string   "website"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "merchant_id"
+    t.index ["merchant_id"], name: "index_venues_on_merchant_id"
   end
 
 end

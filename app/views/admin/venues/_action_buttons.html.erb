@@ -1,0 +1,8 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Actions</div>
+  <div class="panel-body">
+    <%= link_to 'Add Product Group', new_admin_venue_product_group_path(@venue), class: 'btn btn-default btn-block'  %>
+    <%= link_to 'Edit', edit_admin_venue_path(@venue), class: 'btn btn-primary btn-block'  %>
+    <%= link_to 'Destroy', admin_venue_path(@venue), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block" %>
+  </div>
+</div>

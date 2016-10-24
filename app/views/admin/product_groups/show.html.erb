@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @product_group.label %> #<%= @product_group.id %></div>
+  <div class="panel-body">
+  	<p class="lead">Status</p>
+  	<p>
+      <% if @product_group.live? %>
+        <span class="label label-success">live</span>
+      <% end %>
+      <% if @product_group.offline? %>
+        <span class="label label-danger">Offline</span>
+      <% end %>
+  	</p>
+
+  	<p class="lead">Label</p>
+  	<p><%= @product_group.label %></p>
+
+  	<p class="lead">Description</p>
+  	<p><%= @product_group.description %></p>
+
+  	<p class="lead">Order</p>
+  	<p><%= @product_group.order %></p>
+  	
+  	<p class="lead">Venue</p>
+  	<p><%= link_to @product_group.venue.name, admin_venue_path(@product_group.venue) %></p>
+  </div>
+  
+  <div class="panel-footer">
+  	<%= link_to 'Edit', edit_admin_product_group_path(@product_group), class: 'btn btn-primary'  %>
+  	<%= link_to 'Destroy', admin_product_group_path(@product_group), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-danger" %>
+  </div>
+</div>
+
+

@@ -1,0 +1,21 @@
+<% @venue.product_groups.each do |product_group| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <% if product_group.live? %>
+        <span class="label label-success">live</span>
+      <% end %>
+      <% if product_group.offline? %>
+        <span class="label label-danger">Offline</span>
+      <% end %>
+
+      <%= product_group.label %>
+
+      <div class="pull-right">
+        <%= link_to 'Add Product', new_admin_product_group_product_path(product_group), class: "btn btn-xs btn-default" %>
+        <%= link_to 'Show', admin_product_group_path(product_group), class: "btn btn-xs btn-default" %>
+        <%= link_to 'Edit', edit_admin_product_group_path(product_group), class: "btn btn-xs btn-primary" %> 
+      </div>
+    </div>
+    <%= render partial: 'products', locals: { product_group: product_group} %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+
+<table class="table" style="margin:0px;">
+  <% unless product_group.products.empty? %>
+    <tr>
+      <th>Status</th>
+      <th>Label</th>
+      <th>Base Price</th>
+      <th>Order</th>
+      <th>Variations</th>
+      <th></th>
+    </tr>
+    <% product_group.products.each do |product| %>
+      <tr>
+        <td>
+          <% if product.live? %>
+            <span class="label label-success">live</span>
+          <% end %>
+          <% if product.offline? %>
+            <span class="label label-danger">Offline</span>
+          <% end %>
+        </td>
+        <td><%= product.label %></td>
+        <td><%= product.base_price %></td>
+        <td><%= product.order %></td>
+        <td> </td>
+        <td class="text-right">
+          <%= link_to 'Show', admin_product_path(product), class: "btn btn-xs btn-default" %>
+          <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-xs btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr><td>Product group empty</td></tr>
+  <% end %>
+</table>

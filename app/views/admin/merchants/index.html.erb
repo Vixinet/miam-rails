@@ -1,38 +1,30 @@
-<h1>
-  Merchants
-  <%= link_to 'New Merchant', new_admin_merchant_path, class: 'btn btn-default'  %>
-</h1>
-
-<table class="table table-hover table-bordered">
-  <thead>
+<div class="panel panel-default">
+  <div class="panel-heading">Merchants</div>
+  <table class="table">
     <tr>
       <th>#</th>
-      <th>Status</th>
-      <th>Name</th>
-      <th colspan="2"> </th>
+      <th>Business</th>
+      <th>City</th>
+      <th>Contact Person</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Venues</th>
+      <th></th>
     </tr>
-  </thead>
-  <tbody>
     <% @merchants.each do |merchant| %>
       <tr>
         <td><%= merchant.id %></td>
-        <td>
-          <% if merchant.editing? %>
-            <span class="label label-default">editing</span>
-          <% end %>
-          <% if merchant.live? %>
-            <span class="label label-success">live</span>
-          <% end %>
-          <% if merchant.offline? %>
-            <span class="label label-danger">Offline</span>
-          <% end %>
-        </td>
-        <td><%= merchant.name %></td>
+        <td><%= merchant.business_name %> <%= "(#{merchant.business_id})" %></td>
+        <td><%= merchant.city %></td>
+        <td><%= merchant.contact_person %></td>
+        <td><%= merchant.phone %></td>
+        <td><a href="mailto:<%= merchant.email %>"><%= merchant.email %></a></td>
+        <td><%= merchant.venues.count %></td>
         <td class="text-right">
-          <%= link_to 'Edit', edit_admin_merchant_path(merchant), class: 'btn btn-default btn-xs' %>
-          <%= link_to 'Show', admin_merchant_path(merchant), class: 'btn btn-primary btn-xs' %>
+          <%= link_to 'Show', admin_merchant_path(merchant), class: "btn btn-xs btn-default" %>
+          <%= link_to 'Edit', edit_admin_merchant_path(merchant), class: "btn btn-xs btn-primary" %>
         </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+</div>

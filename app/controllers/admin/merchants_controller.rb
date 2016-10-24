@@ -25,7 +25,7 @@ class Admin::MerchantsController < ApplicationController
     @merchant = Merchant.new(merchant_params)
     if @merchant.save
       flash[:success] = "Merchant created"
-      redirect_to admin_merchant_path(@merchant)
+      redirect_to admin_merchants_url
     else
       flash[:danger] = "Can't create merchant"
       render :new
@@ -36,7 +36,7 @@ class Admin::MerchantsController < ApplicationController
   def update
     if @merchant.update(merchant_params)
       flash[:success] = "Merchant updated"
-      redirect_to admin_merchant_path(@merchant)
+      redirect_to admin_merchants_url
     else
       flash[:danger] = "Can't update merchant"
       render :edit
@@ -58,6 +58,6 @@ class Admin::MerchantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def merchant_params
-      params.require(:merchant).permit(:status, :name, :title, :email, :phone, :website, :address, :city, :zipcode, :price, :delivery_cost, :free_delivery_limit, :small_order_surcharge, :maximum_distance, :long_delivery_surcharge)
+      params.require(:merchant).permit(:business_name, :business_id, :vat, :address, :city, :zip_code, :contact_person, :phone, :email)
     end
 end
