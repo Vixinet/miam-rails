@@ -1,0 +1,29 @@
+<%= form_for variation_option.persisted? ? [:admin, variation_option] : [:admin, :product_variation, variation_option], :html => { class: 'form-horizontal' } do |f| %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= variation_option.persisted? ? 'Edit' : ' New' %> Variation option</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <%= f.label :label, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :label , class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :price_variation, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :price_variation , class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+          <%= f.check_box :allow_multi_choices %> <%= f.label :allow_multi_choices, class: ' control-label' %>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

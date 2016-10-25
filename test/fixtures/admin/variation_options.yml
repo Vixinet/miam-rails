@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label: MyString
+  allow_multi_choices: MyString
+  product_variation: one
+
+two:
+  label: MyString
+  allow_multi_choices: MyString
+  product_variation: two

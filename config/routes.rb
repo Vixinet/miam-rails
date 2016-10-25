@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    resources :variation_options
+  end
   root 'static_pages#home'
 
   # Static Pages
@@ -18,7 +21,9 @@ Rails.application.routes.draw do
     resources :venues do
       resources :product_groups, :except => :index, shallow: true do
         resources :products, :except => :index, shallow: true do
-          resources :product_variations, :except => :index, shallow: true
+          resources :product_variations, :except => [:index, :show], shallow: true do
+            resources :variation_options, :except => [:index, :show], shallow: true
+          end
         end
       end
     end

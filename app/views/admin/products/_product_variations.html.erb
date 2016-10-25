@@ -10,11 +10,12 @@
       <%= product_variation.label %>
 
       <div class="pull-right">
+        <%= link_to 'Add variation option', new_admin_product_variation_variation_option_path(product_variation), class: "btn btn-xs btn-default" %>
         <%= link_to 'Edit', edit_admin_product_variation_path(product_variation), class: "btn btn-xs btn-primary" %> 
       </div>
     </div>
 
-    <%= render 'variation_options', variation_options: [] %>
+    <%= render 'variation_options', variation_options: product_variation.variation_options %>
 
   </div>
 <% end %>

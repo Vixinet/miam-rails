@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025171226) do
+ActiveRecord::Schema.define(version: 20161025180455) do
 
   create_table "merchants", force: :cascade do |t|
     t.datetime "created_at",     null: false
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20161025171226) do
 
   create_table "product_variations", force: :cascade do |t|
     t.string   "label"
-    t.boolean  "allow_multi_choices"
+    t.boolean  "allow_multi_choices", default: false
     t.integer  "product_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.index ["product_id"], name: "index_product_variations_on_product_id"
   end
 
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 20161025171226) do
     t.boolean  "admin",           default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "variation_options", force: :cascade do |t|
+    t.string   "label"
+    t.boolean  "allow_multi_choices",  default: false
+    t.float    "price_variation",      default: 0.0
+    t.integer  "product_variation_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["product_variation_id"], name: "index_variation_options_on_product_variation_id"
   end
 
   create_table "venues", force: :cascade do |t|

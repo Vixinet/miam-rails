@@ -1,11 +1,7 @@
 class Admin::ProductVariationsController < ApplicationController
-  before_action :set_product_variation, only: [:show, :edit, :update, :destroy]
+  before_action :set_product_variation, only: [:edit, :update, :destroy]
 
   layout 'admin'
-
-  # GET /admin/product_variations/1
-  def show
-  end
 
   # GET /admin/product/1/product_variations/new
   def new
