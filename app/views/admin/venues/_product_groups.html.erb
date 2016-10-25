@@ -12,10 +12,10 @@
 
       <div class="pull-right">
         <%= link_to 'Add Product', new_admin_product_group_product_path(product_group), class: "btn btn-xs btn-default" %>
-        <%= link_to 'Show', admin_product_group_path(product_group), class: "btn btn-xs btn-default" %>
+        <!-- <%= link_to 'Show', admin_product_group_path(product_group), class: "btn btn-xs btn-default" %> -->
         <%= link_to 'Edit', edit_admin_product_group_path(product_group), class: "btn btn-xs btn-primary" %> 
       </div>
     </div>
-    <%= render partial: 'products', locals: { product_group: product_group} %>
+    <%= render 'products', products: product_group.products %>
   </div>
 <% end %>

@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Product</div>
+  <div class="panel-body">
+    <p class="lead">
+      <%= @product.label %>
+      <% if @product.live? %>
+        <span class="label label-success pull-right">live</span>
+      <% end %>
+      <% if @product.offline? %>
+        <span class="label label-danger pull-right">Offline</span>
+      <% end %>
+    </p>
+    <p><%= @product.description %></p>
+    <p><%= @product.base_price %> CHF</p>
+    
+    <p>Venue: <%= link_to @product.product_group.venue.name, admin_venue_path(@product.product_group.venue) %></p>
+    <p>Product Group: <%= link_to @product.product_group.label, admin_product_group_path(@product.product_group) %></p>
+  </div>
+</div>

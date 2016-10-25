@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   validates :product_group_id, presence: true
 
   belongs_to :product_group
-  #has_many :product_variations, :dependent => :destroy
+  has_many :product_variations, :dependent => :destroy
 
   enum status: [:live, :offline]
 end

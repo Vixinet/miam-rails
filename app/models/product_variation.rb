@@ -1,10 +1,7 @@
-class Product < ApplicationRecord
+class ProductVariation < ApplicationRecord
   validates :label, presence: true
-  validates :price_alteration, presence: true
-  validates :product_group_id, presence: true
+  validates :allow_multi_choices, presence: true
+  validates :product_id, presence: true
 
-  belongs_to :product_group
-  #has_many :product_variations, :dependent => :destroy
-
-  enum status: [:live, :offline]
+  belongs_to :product
 end

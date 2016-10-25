@@ -3,25 +3,25 @@ class Admin::VenuesController < ApplicationController
 
   layout 'admin'
 
-  # GET /venues
+  # GET /admin/venues
   def index
     @venues = Venue.all
   end
 
-  # GET /venues/1
+  # GET /admin/venues/1
   def show
   end
 
-  # GET /venues/new
+  # GET /admin/venues/new
   def new
     @venue = Venue.new
   end
 
-  # GET /venues/1/edit
+  # GET /admin/venues/1/edit
   def edit
   end
 
-  # POST /venues
+  # POST /admin/venues
   def create
     @venue = Venue.new(venue_params)
 
@@ -34,7 +34,7 @@ class Admin::VenuesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /venues/1
+  # PATCH/PUT /admin/venues/1
   def update
     if @venue.update(venue_params)
       flash[:success] = 'Venue was successfully updated.'
@@ -45,7 +45,7 @@ class Admin::VenuesController < ApplicationController
     end
   end
 
-  # DELETE /venues/1
+  # DELETE /admin/venues/1
   def destroy
     @venue.destroy
     redirect_to admin_venues_url

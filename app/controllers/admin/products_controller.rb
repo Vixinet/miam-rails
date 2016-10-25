@@ -3,26 +3,20 @@ class Admin::ProductsController < ApplicationController
 
   layout 'admin'
 
-  # Does not have any sense because we have all of them into the venue#show
-  # GET /products
-  # def index
-  #   @products = Product.all
-  # end
-
-  # GET /products/1
+  # GET /admin/products/1
   def show
   end
 
-  # GET /products/new
+  # GET /admin/venues/1/products/new
   def new
     @product = Product.new
   end
 
-  # GET /products/1/edit
+  # GET /admin/products/1/edit
   def edit
   end
 
-  # POST /products
+  # POST /admin/venues/1/products
   def create
     @product = Product.new(product_params)
     @product.product_group = ProductGroup.find(params[:product_group_id])
@@ -36,7 +30,7 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
+  # PATCH/PUT /admin/products/1
   def update
     if @product.update(product_params)
       flash[:success] = 'Product was successfully updated.'
@@ -47,10 +41,10 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
+  # DELETE /admin/products/1
   def destroy
     @product.destroy
-    redirect_to admin_products_url
+    redirect_to admin_venue_url(@product.product_group.venue)
   end
 
   private

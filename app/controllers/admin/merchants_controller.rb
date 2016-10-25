@@ -3,6 +3,7 @@ class Admin::MerchantsController < ApplicationController
 
   layout 'admin'
 
+  # GET /admin/merchants
   def index
     @merchants = Merchant.all
   end

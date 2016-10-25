@@ -1,6 +1,6 @@
 
 <table class="table" style="margin:0px;">
-  <% unless product_group.products.empty? %>
+  <% unless products.empty? %>
     <tr>
       <th>Status</th>
       <th>Label</th>
@@ -9,7 +9,7 @@
       <th>Variations</th>
       <th></th>
     </tr>
-    <% product_group.products.each do |product| %>
+    <% products.each do |product| %>
       <tr>
         <td>
           <% if product.live? %>

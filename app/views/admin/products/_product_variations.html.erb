@@ -1,0 +1,20 @@
+<% @product.product_variations.each do |product_variation| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <% if product_variation.allow_multi_choices? %>
+        <span class="label label-success">Multi choice</span>
+      <% else %>
+        <span class="label label-success">Single choice</span>
+      <% end %>
+
+      <%= product_variation.label %>
+
+      <div class="pull-right">
+        <%= link_to 'Edit', edit_admin_product_variation_path(product_variation), class: "btn btn-xs btn-primary" %> 
+      </div>
+    </div>
+
+    <%= render 'variation_options', variation_options: [] %>
+
+  </div>
+<% end %>

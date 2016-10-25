@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     resources :merchants
     resources :venues do
       resources :product_groups, :except => :index, shallow: true do
-        resources :products, :except => :index, shallow: true
+        resources :products, :except => :index, shallow: true do
+          resources :product_variations, :except => :index, shallow: true
+        end
       end
     end
   end

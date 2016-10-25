@@ -1,0 +1,24 @@
+
+<table class="table" style="margin:0px;">
+  <% unless variation_options.empty? %>
+    <tr>
+      <th>Label</th>
+      <th>Price variation</th>
+      <th>Allow multi choices</th>
+      <th></th>
+    </tr>
+    <% variation_options.each do |variation_option| %>
+      <tr>
+        <td><%= variation_option.label %></td>
+        <td><%= variation_option.price_variation %></td>
+        <td><%= variation_option.allow_multi_choices? ? 'yes' : 'no' %></td>
+        <td> </td>
+        <td class="text-right">
+          <%= link_to 'Edit', edit_admin_variation_option_path(variation_option), class: "btn btn-xs btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr><td>Product variation empty</td></tr>
+  <% end %>
+</table>

@@ -3,26 +3,20 @@ class Admin::ProductGroupsController < ApplicationController
 
   layout 'admin'
 
-  # Does not have any sense because we have all of them into the venue#show
-  # GET /admin/venues/:venue_id/product_groups
-  # def index
-  #   @product_groups = ProductGroup.where(venue_id: params[:venue_id])
-  # end
-
   # GET /admin/product_groups/1
   def show
   end
 
-  # GET /admin/venues/:venue_id/product_groups/new
+  # GET /admin/venues/1/product_groups/new
   def new
     @product_group = ProductGroup.new
   end
 
-  # GET /admin/venues/:venue_id/product_groups/1/edit
+  # GET /admin/product_groups/1/edit
   def edit
   end
 
-  # POST /admin/venues/:venue_id/product_groups
+  # POST /admin/venues/1/product_groups
   def create
     @product_group = ProductGroup.new(product_group_params)
     @product_group.venue = Venue.find(params[:venue_id])
