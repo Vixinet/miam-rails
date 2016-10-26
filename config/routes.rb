@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-  namespace :admin do
-    resources :variation_options
-  end
   root 'static_pages#home'
 
   # Static Pages
@@ -27,6 +24,10 @@ Rails.application.routes.draw do
         end
       end
     end
+  end
+
+  namespace :api do
+    resources :venues, :only => [:index, :show], format: 'json'
   end
 
   # DEPRECATION GRAVEYARD

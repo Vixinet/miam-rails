@@ -8,6 +8,8 @@
       <th>Phone</th>
       <th>Website</th>
       <th>Merchant</th>
+      <th>Product groups</th>
+      <th>Products</th>
       <th></th>
     </tr>
     <% @venues.each do |venue| %>
@@ -28,6 +30,8 @@
         <td><%= venue.phone %></td>
         <td><a href="<%= venue.website_url_with_assumed_protocol %>" target="_blank">www</a></td>
         <td><%= link_to venue.merchant.business_name, admin_merchant_path(venue.merchant) %></td>
+        <td><%= venue.product_groups.count %></td>
+        <td><%= venue.products.count %></td>
         <td class="text-right">
           <%= link_to 'Show', admin_venue_path(venue), class: "btn btn-xs btn-default" %>
           <%= link_to 'Edit', edit_admin_venue_path(venue), class: "btn btn-xs btn-primary" %>

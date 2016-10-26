@@ -8,7 +8,7 @@ gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.2.1'
 gem 'turbolinks', '~> 5'
-# gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
@@ -17,7 +17,6 @@ gem 'bcrypt-ruby'
 
 # gem 'sprockets', '2.11.0' # Do we need it?
 
-# gem 'i18n' # multi langs
 # gem 'mail' # send emails
 # gem 'faker' # create fake data
 # gem 'httparty', '~> 0.13.3' # to make http requests easily
