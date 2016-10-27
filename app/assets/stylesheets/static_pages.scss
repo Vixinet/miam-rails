@@ -1,3 +1,55 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+	// background-image: linear-gradient(225deg, #551FCF 0%, #DC3CF6 100%);
+}
+
+
+@keyframes panning {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 100%; }
+  50% { background-position: 100% 0%; }
+  75% { background-position: 0 100%; }
+  200% { background-position: 0 0; }
+}
+
+.home {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: url(home/bg-panning.jpg);
+  background-size: 120%;
+  animation: panning 600s infinite linear;
+}
+
+.home .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 10;
+}
+
+.home .app-icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -60px 0px 0px -60px;
+  z-index: 20;
+}
+
+strong {
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 52px;
+  vertical-align: middle;
+}

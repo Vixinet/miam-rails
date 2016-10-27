@@ -26,24 +26,25 @@ gem 'bcrypt-ruby'
 # gem 'activejob' # create jobs
 # gem 'delayed_job_active_record'
 
-# gem 'rack-timeout' # heroku related
-# gem 'newrelic_rpm' # on-demand application performance management
+
 
 group :development, :test do
-	gem 'sqlite3'
-	gem 'byebug', platform: :mri
+  gem 'sqlite3'
+  gem 'byebug', platform: :mri
 end
 
 group :development do
-	# gem 'web-console'
-	gem 'listen', '~> 3.0.5'
-	gem 'spring'
-	gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'web-console'
+  gem 'listen', '~> 3.0.5'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :production do
-	gem 'pg'
-	# gem 'exceptiontrap'
+  gem 'pg'
+  # gem 'rack-timeout' # heroku related
+  # gem 'newrelic_rpm' # on-demand application performance management
+  # gem 'exceptiontrap'
 end
 
 
