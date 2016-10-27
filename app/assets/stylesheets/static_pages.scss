@@ -19,6 +19,22 @@ html, body {
   200% { background-position: 0 0; }
 }
 
+@-webkit-keyframes panning {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 100%; }
+  50% { background-position: 100% 0%; }
+  75% { background-position: 0 100%; }
+  200% { background-position: 0 0; }
+}
+
+@-webkit-keyframes panning {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 100%; }
+  50% { background-position: 100% 0%; }
+  75% { background-position: 0 100%; }
+  200% { background-position: 0 0; }
+}
+
 .home {
   position: fixed;
   height: 100%;

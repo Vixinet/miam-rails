@@ -5,13 +5,13 @@
     </div>
     <div class="panel-body">
       <div class="form-group">
-        <%= f.label :status, class: 'col-sm-2 control-label' %>
+        <%= f.label :status, class: 'col-sm-2 control-label' %> *
         <div class="col-sm-10">
           <%= f.select(:status , Venue.statuses.keys, {}, { :class => 'form-control' }) %>
         </div>
       </div>
       <div class="form-group">
-        <%= f.label :name, class: 'col-sm-2 control-label' %>
+        <%= f.label :name, class: 'col-sm-2 control-label' %> *
         <div class="col-sm-10">
           <%= f.text_field :name , class: 'form-control' %>
         </div>
@@ -35,9 +35,8 @@
         </div>
       </div>
       <div class="form-group">
-        <%= f.label :merchant_id, class: 'col-sm-2 control-label' %>
+        <%= f.label :merchant_id, class: 'col-sm-2 control-label' %> *
         <div class="col-sm-10">
-
           <%= f.collection_select( :merchant_id, Merchant.all, :id, :business_name, {:prompt => true }, class: 'form-control') %>
         </div>
       </div>

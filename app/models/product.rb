@@ -11,7 +11,7 @@ class Product < ApplicationRecord
 
   def set_order
     unless self.order
-      @next = ProductGroup.where(venue_id: self.venue_id).maximum("order")
+      @next = Product.where(product_group_id: self.product_group_id).maximum("order")
       self.order = @next ? @next + 1 : 1;
     end
   end
