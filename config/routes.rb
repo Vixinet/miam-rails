@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   # Static Pages
-  match '/support', to: 'static_pages#support', via: 'get'
+  # match '/support', to: 'static_pages#support', via: 'get'
 
   # Handle User & Sessions
   get    'login'   => 'sessions#new'
