@@ -23,7 +23,7 @@ html, body {
   position: fixed;
   height: 100%;
   width: 100%;
-  background: url(home/bg-panning.jpg);
+  background: url(asset-path('home/bg-panning.jpg'));
   background-size: 120%;
   animation: panning 600s infinite linear;
 }
@@ -43,7 +43,7 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -60px 0px 0px -60px;
+  margin: -125px 0px 0px -125px;
   z-index: 20;
 }
 
