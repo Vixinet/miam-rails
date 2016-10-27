@@ -14,6 +14,7 @@ gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'json'
 gem 'bcrypt-ruby'
+gem 'rename'
 
 # gem 'sprockets', '2.11.0' # Do we need it?
 
@@ -26,7 +27,7 @@ gem 'bcrypt-ruby'
 # gem 'activejob' # create jobs
 # gem 'delayed_job_active_record'
 
-gem 'rack-timeout' # heroku related
+# gem 'rack-timeout' # heroku related
 # gem 'newrelic_rpm' # on-demand application performance management
 
 group :development, :test do
