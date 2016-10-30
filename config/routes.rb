@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :opt_ins, :only => [:new, :create]
-  resources :cities, :only => [:new, :create, :index]
+  resources :opt_ins, :only => [:create]
+  resources :cities, :only => [:create]
+
+  match '/cities/:id/vote', to: 'cities#vote', via: 'put', as: 'vote_city'
 
   root 'static_pages#home'
 

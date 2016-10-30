@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   
   def home
   	@city = City.new
-  	@cities = City.all.where(status: :live)
+  	@cities = City.all.where(status: :live).order(:votes).reverse
 
   	@opt_in = OptIn.new
   end

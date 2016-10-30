@@ -61,6 +61,33 @@
 
   & main {
 
+    & h1 {
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0px;
+        height: 5px;
+        width: 100%;
+        background: #BC00DB;
+        border-radius: 5px;
+      }
+    }
+
+    & .list-group {
+
+    }
+
+    & input {
+      border-radius: 0px;
+      font-weight: lighter;
+    }
+
     & section {
       padding: 100px 0px;
       border-bottom: #dedede 0.5px solid;
@@ -69,6 +96,15 @@
         line-height: 1.8em;
       }
 
+      &.cities {
+        & .badge {
+          background-color: #BC00DB;
+        }
+        
+        & input {
+          border-color: #BFA5FB;
+        }
+      }
 
       &.optins {
         padding: 200px 0px;
@@ -79,18 +115,23 @@
           background: transparent;
           color: white;
           border-color: white;
-          font-weight: lighter;
+          
+          
           &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-            color: white !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-weight: lighter;
           }
           &::-moz-placeholder { /* Firefox 19+ */
-            color: white !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-weight: lighter;
           }
           &:-ms-input-placeholder { /* IE 10+ */
-            color: white !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-weight: lighter;
           }
           &:-moz-placeholder { /* Firefox 18- */
-            color: white !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-weight: lighter;
           }
         }
 
@@ -100,6 +141,22 @@
       }
     }
   }
+}
+
+.animate-hidden {
+     opacity:0;
+}
+
+.animate-visible {
+     opacity:1;
+}
+
+::selection {
+  background : #BFA5FB;
+}
+
+::-moz-selection {
+  background : #BFA5FB;
 }
 
 @keyframes blink{
