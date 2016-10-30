@@ -29,8 +29,6 @@ gem 'modernizr-rails'
 # gem 'activejob' # create jobs
 # gem 'delayed_job_active_record'
 
-
-
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platform: :mri
