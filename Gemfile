@@ -14,13 +14,16 @@ gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'json'
 gem 'bcrypt-ruby'
+gem "typedjs-rails", "~> 1.0.4"
+gem "intercom-rails"
+gem 'toastr-rails'
+gem 'modernizr-rails'
 
-# gem 'sprockets', '2.11.0' # Do we need it?
+# gem 'sprockets'
 
 # gem 'mail' # send emails
 # gem 'faker' # create fake data
 # gem 'httparty', '~> 0.13.3' # to make http requests easily
-# gem "intercom-rails" # Intercom...
 # gem 'oauth' # Is it for us or for external oauth services?
 # gem 'nokogiri' # Might be a dependance
 # gem 'activejob' # create jobs

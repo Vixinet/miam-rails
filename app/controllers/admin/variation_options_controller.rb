@@ -1,4 +1,6 @@
 class Admin::VariationOptionsController < ApplicationController
+  before_action :logged_in_user
+  before_action :admin_user
   before_action :set_min_variation_option, only: [:edit, :update, :destroy]
 
   layout 'admin'
@@ -52,6 +54,6 @@ class Admin::VariationOptionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def variation_option_params
-      params.require(:variation_option).permit(:label, :allow_multi_choices, :price_variation)
+      params.require(:variation_option).permit(:label, :allow_multi_choices, :price_variation, :multi_choice_limit)
     end
 end

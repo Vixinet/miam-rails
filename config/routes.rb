@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :opt_ins, :only => [:new, :create]
+  resources :cities, :only => [:new, :create, :index]
+
   root 'static_pages#home'
 
   # Static Pages
@@ -11,9 +14,11 @@ Rails.application.routes.draw do
   get    'logout'  => 'sessions#destroy'
   delete 'logout'  => 'sessions#destroy'
 
-  # HAndle Admin space
+  # Handle Admin space
   match '/admin', to: 'admin#home', via: 'get'  
+
   namespace :admin do
+    resources :cities, :except => :show
     resources :merchants
     resources :venues do
       resources :product_groups, :except => :index, shallow: true do
@@ -26,10 +31,13 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api do
-    resources :venues, :only => [:index, :show], format: 'json'
-  end
+  # Release Candidate 2
+
+  # namespace :api do
+  #   resources :venues, :only => [:index, :show], format: 'json'
+  # end
 
   # DEPRECATION GRAVEYARD
+
   
 end

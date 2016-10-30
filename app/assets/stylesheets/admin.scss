@@ -1,3 +1,33 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body[class^="c-admin"] {
+
+  background: #fdfdfd;
+
+  & .navbar {
+
+    & .navbar-brand {
+
+      padding: 0px 15px 0px 15px;
+
+      & img {
+      	height: 100%;
+      }
+    }
+
+    &.navbar-inverse {
+      background: linear-gradient(225deg, #551FCF 0%, #AA3CF6 100%);
+      border: none;  
+    }
+
+    & a {
+      color: white !important;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

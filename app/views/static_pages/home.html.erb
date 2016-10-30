@@ -1,4 +1,95 @@
-<div class="home">
-  <div class="overlay"></div>
-  <%= image_tag('logo-gradient@0.25x.png', class:'app-icon')  %>
-</div>
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="text-center">
+          Grâce à <%= image_tag('logo-white@0.25x.png')  %><br/>
+          ce soir c'est <span class="typed"></span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-lg-offset-1">
+          <h1>Petite faim?</h1>
+          <p class="lead">
+            Tout le monde a un restaurant favori. Miam livre les plats de votre restaurant préféré directement au seuil de votre porte. 
+          </p>
+          <p class="lead">
+            Avec notre système de payement en ligne, plus besoin d'avoir d'espèces sur vous. Régler lors de la commande en toute sécurité: plus de perte de temps ou de monnaie à rendre.
+          </p>
+          <p class="lead">
+            Miam approche la livraison à domicile d'une toute nouvelle manière. Avec nous, vos plats préférés en moins de 30 minutes.
+          </p>
+          <p class="lead">
+            <i>Cliqué c'est livré!</i>
+          </p>
+        </div>
+        <div class="col-lg-4 col-lg-offset-1">
+        <!--
+          <div id="cities_new">
+            <strong>Representez votre ville!</strong>
+            <%= form_for(@city, remote: true) do |f| %>
+              <%= f.label :label %><br>
+              <%= f.text_field :label %>
+              <%= f.submit %>
+            <% end %>
+
+            <p class="lead">Villes à venir</p>
+            <ul>
+              <li>Sierre</li>
+              <li>Sion</li>
+            </ul>
+          </div>
+          <!-- <div id="cities_index">
+            Villes à venir
+            <% @cities.each do |city| %>
+              <span class="label label-primary"><%= city.label %> <span class="badge"><%= city.votes %></span></span>
+            <% end %>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="optins">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h2 class="text-center">Soyez parmis les premiers</h2>
+          <p class="lead text-center">Inscrivez-vous maintenant et soyez parmis les premiers invités à utiliser Miam!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 text-center">
+          <%= form_for(@opt_in, remote:true) do |f| %>
+            <div class="input-group">
+              <%= f.email_field :email, class: "form-control input-lg", placeholder: "Votre addresse e-mail" %>
+              <span class="input-group-btn">
+                <%= f.submit "Invitez-moi!", class: 'btn btn-default btn-lg' %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-1">
+          <h2 class="text-left">Patron d'établissement?</h2>
+          <p class="lead">Vous souhaitez augmenter votre chiffre d'affaire en nous déléguant votre service de livraison? Contactez-nous à <a href="mailto:hello@miam.ch">hello@miam.ch</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+
+</footer>

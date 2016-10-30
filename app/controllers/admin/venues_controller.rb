@@ -1,4 +1,6 @@
 class Admin::VenuesController < ApplicationController
+  before_action :logged_in_user
+  before_action :admin_user
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
 
   layout 'admin'

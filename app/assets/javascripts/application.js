@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require toastr
+//= require google_analytics
 //= require_tree .
+//= require_tree ./vendor

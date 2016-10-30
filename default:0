@@ -1,0 +1,2 @@
+      invoke  active_record
+      remove    db/migrate/20161028141856_add_multi_choice_limit_to_product_variations.rb

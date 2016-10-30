@@ -22,7 +22,7 @@
         <td><%= product.label %></td>
         <td><%= product.base_price %></td>
         <td><%= product.order %></td>
-        <td> </td>
+        <td><%= product.product_variations.count %></td>
         <td class="text-right">
           <%= link_to 'Show', admin_product_path(product), class: "btn btn-xs btn-default" %>
           <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-xs btn-primary" %>

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025180455) do
+ActiveRecord::Schema.define(version: 20161029195502) do
+
+  create_table "cities", force: :cascade do |t|
+    t.integer  "status"
+    t.string   "label"
+    t.integer  "votes",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "merchants", force: :cascade do |t|
     t.datetime "created_at",     null: false
@@ -24,6 +32,12 @@ ActiveRecord::Schema.define(version: 20161025180455) do
     t.string   "contact_person"
     t.string   "phone"
     t.string   "email"
+  end
+
+  create_table "opt_ins", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "product_groups", force: :cascade do |t|
@@ -43,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161025180455) do
     t.integer  "product_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "multi_choice_limit",  default: 0
     t.index ["product_id"], name: "index_product_variations_on_product_id"
   end
 
@@ -74,6 +89,7 @@ ActiveRecord::Schema.define(version: 20161025180455) do
     t.integer  "product_variation_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.integer  "multi_choice_limit",   default: 0
     t.index ["product_variation_id"], name: "index_variation_options_on_product_variation_id"
   end
 

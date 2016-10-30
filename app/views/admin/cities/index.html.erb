@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Merchants</div>
+  <table class="table">
+    <tr>
+      <th>City</th>
+      <th>Votes</th>
+    </tr>
+    <% @cities.each do |city| %>
+      <tr>
+        <td>
+          <% if city.pending? %>
+            <span class="label label-default">Pending</span>
+          <% end %>
+          <% if city.live? %>
+            <span class="label label-success">Live</span>
+          <% end %>
+          <% if city.rejected? %>
+            <span class="label label-danger">Rejected</span>
+          <% end %>
+          <%= city.label %>
+        </td>
+        <td><%= city.votes %></td>
+        <td class="text-right">
+          <%= link_to 'Edit', edit_admin_city_path(city), class: "btn btn-xs btn-primary" %>
+          <%= link_to 'Destroy', admin_city_path(city), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

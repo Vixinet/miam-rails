@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+  before_action :logged_in_user
+  before_action :admin_user
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   layout 'admin'

@@ -2,70 +2,118 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html, body {
-	margin: 0px;
-	padding: 0px;
-	height: 100%;
-	width: 100%;
-	// background-image: linear-gradient(225deg, #551FCF 0%, #DC3CF6 100%);
+
+.c-static_pages {
+
+  & header {
+    position: relative;
+    width: 100%;
+    background: url(asset-path('home/bg-panning.jpg')) top left no-repeat fixed;
+    background-size: cover;
+    padding: 150px 0;
+    color: white;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index:10;
+    }
+
+    & .container {
+      position: relative;
+      z-index:20;
+    }
+
+    & h1 {
+      color: white;
+      font-size: 40px;
+      font-weight: 300;
+
+      & .typed {
+        font-weight: bold;
+      }
+
+      & img {
+        height: 150px;
+        margin-left: 5px;
+        position: relative;
+        top: -10px;
+      }
+    }
+
+    & .iphone {
+      max-width: 100%;
+
+    }
+
+    & .typed-cursor{
+      opacity: 1;
+      -webkit-animation: blink 0.7s infinite;
+      -moz-animation: blink 0.7s infinite;
+      animation: blink 0.7s infinite;
+    }
+  }
+
+  & main {
+
+    & section {
+      padding: 100px 0px;
+      border-bottom: #dedede 0.5px solid;
+
+      & p {
+        line-height: 1.8em;
+      }
+
+
+      &.optins {
+        padding: 200px 0px;
+        background-image: linear-gradient(225deg, #551FCF 0%, #DC3CF6 100%);
+        color: white;
+
+        & input {
+          background: transparent;
+          color: white;
+          border-color: white;
+          font-weight: lighter;
+          &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: white !important;
+          }
+          &::-moz-placeholder { /* Firefox 19+ */
+            color: white !important;
+          }
+          &:-ms-input-placeholder { /* IE 10+ */
+            color: white !important;
+          }
+          &:-moz-placeholder { /* Firefox 18- */
+            color: white !important;
+          }
+        }
+
+        & .input-group {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
 }
 
-
-@keyframes panning {
-  0% { background-position: 0% 0%; }
-  25% { background-position: 100% 100%; }
-  50% { background-position: 100% 0%; }
-  75% { background-position: 0 100%; }
-  200% { background-position: 0 0; }
+@keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
 }
-
-@-webkit-keyframes panning {
-  0% { background-position: 0% 0%; }
-  25% { background-position: 100% 100%; }
-  50% { background-position: 100% 0%; }
-  75% { background-position: 0 100%; }
-  200% { background-position: 0 0; }
+@-webkit-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
 }
-
-@-webkit-keyframes panning {
-  0% { background-position: 0% 0%; }
-  25% { background-position: 100% 100%; }
-  50% { background-position: 100% 0%; }
-  75% { background-position: 0 100%; }
-  200% { background-position: 0 0; }
-}
-
-.home {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background: url(asset-path('home/bg-panning.jpg'));
-  background-size: 120%;
-  animation: panning 600s infinite linear;
-}
-
-.home .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  z-index: 10;
-}
-
-.home .app-icon {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -125px 0px 0px -125px;
-  z-index: 20;
-}
-
-strong {
-  font-weight: 900;
-  letter-spacing: 2px;
-  font-size: 52px;
-  vertical-align: middle;
+@-moz-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
 }

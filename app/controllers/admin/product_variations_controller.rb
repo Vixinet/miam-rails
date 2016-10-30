@@ -1,4 +1,6 @@
 class Admin::ProductVariationsController < ApplicationController
+  before_action :logged_in_user
+  before_action :admin_user
   before_action :set_product_variation, only: [:edit, :update, :destroy]
 
   layout 'admin'
@@ -51,6 +53,6 @@ class Admin::ProductVariationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_variation_params
-      params.require(:product_variation).permit(:label, :allow_multi_choices)
+      params.require(:product_variation).permit(:label, :allow_multi_choices, :multi_choice_limit)
     end
 end

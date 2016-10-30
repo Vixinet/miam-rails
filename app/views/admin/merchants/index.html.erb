@@ -2,7 +2,6 @@
   <div class="panel-heading">Merchants</div>
   <table class="table">
     <tr>
-      <th>#</th>
       <th>Business</th>
       <th>City</th>
       <th>Contact Person</th>
@@ -13,7 +12,6 @@
     </tr>
     <% @merchants.each do |merchant| %>
       <tr>
-        <td><%= merchant.id %></td>
         <td><%= merchant.business_name %> <%= "(#{merchant.business_id})" %></td>
         <td><%= merchant.city %></td>
         <td><%= merchant.contact_person %></td>
