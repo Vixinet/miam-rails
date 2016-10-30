@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require toastr
+//= require typed
 //= require google_analytics
 //= require_tree .
 //= require_tree ./vendor
