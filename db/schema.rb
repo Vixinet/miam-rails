@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029195502) do
+ActiveRecord::Schema.define(version: 20161031212045) do
 
   create_table "cities", force: :cascade do |t|
     t.integer  "status"
@@ -99,9 +99,17 @@ ActiveRecord::Schema.define(version: 20161029195502) do
     t.string   "title"
     t.string   "phone"
     t.string   "website"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "merchant_id"
+    t.integer  "city_id"
+    t.boolean  "accepts_take_away"
+    t.boolean  "accepts_delivery"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street"
+    t.string   "city_name"
+    t.index ["city_id"], name: "index_venues_on_city_id"
     t.index ["merchant_id"], name: "index_venues_on_merchant_id"
   end
 

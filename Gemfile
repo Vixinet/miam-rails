@@ -21,6 +21,8 @@ gem "typedjs-rails", "~> 1.0.4"
 gem 'toastr-rails'
 gem 'modernizr-rails'
 
+gem 'geocoder'
+
 # External services
 gem "intercom-rails"
 gem "intercom"
