@@ -11,7 +11,7 @@ IntercomRails.config do |config|
   # This is required to enable secure mode, you can find it on your Setup
   # guide in the "Secure Mode" step.
   #
-  # config.api_secret = "..."
+  config.api_secret = Rails.application.secrets.intercom_app_secret
 
   # == Enabled Environments
   # Which environments is auto inclusion of the Javascript enabled for

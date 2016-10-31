@@ -50,6 +50,6 @@ $(document).on "turbolinks:load", ->
     toastr.error("Avez-vous ajouté votre nom de ville dans le champs texte?", {timeOut: 10000})
 
   $(".list-group-item").on "ajax:success", ->
-    $(this).attr('href', '')
+    $('.badge.vote').remove();
     toastr.info("Vote pris en compte! &#128077;", {timeOut: 10000})
 

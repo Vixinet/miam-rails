@@ -16,6 +16,7 @@ gem 'json'
 gem 'bcrypt-ruby'
 gem "typedjs-rails", "~> 1.0.4"
 gem "intercom-rails"
+gem "intercom"
 gem 'toastr-rails'
 gem 'modernizr-rails'
 
