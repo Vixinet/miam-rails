@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Opt Ins Overview</div>
+  <table class="table">
+    <tr>
+      <th>Date</th>
+      <th>Amount</th>
+    </tr>
+    <% if @opt_ins.each do |k, v| %>
+      <tr>
+        <td><%= k %></td>
+        <td><%= v %></td>
+      </tr>
+    <% end.empty? %>
+      <tr><td colspan="4">No data</td></tr>
+    <% end %>
+  </table>
+</div>
+
+
