@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031212045) do
+ActiveRecord::Schema.define(version: 20161031222947) do
 
   create_table "cities", force: :cascade do |t|
     t.integer  "status"
@@ -80,6 +80,10 @@ ActiveRecord::Schema.define(version: 20161031212045) do
     t.boolean  "admin",           default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.float    "credits",         default: 0.0
+    t.string   "invitation_code"
+    t.string   "phone"
+    t.string   "name"
   end
 
   create_table "variation_options", force: :cascade do |t|

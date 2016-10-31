@@ -33,4 +33,10 @@ body[class^="c-admin"] {
       }
     }
   }
+
+  .field_with_errors {
+    & input {
+      border-color: #aa0000;
+    }
+  }
 }

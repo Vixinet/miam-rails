@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    resources :users
+  end
   resources :opt_ins, :only => [:create]
   resources :cities, :only => [:create]
 
