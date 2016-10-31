@@ -1,8 +1,7 @@
 {
   "name": "miam-rails",
   "scripts": {
-    "postdeploy": "rake db:migrate"
-    "postdeploy": "rake db:seed"
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake db:seed"
   },
   "env": {
     "INTERCOM_ACCESS_TOKEN": {
