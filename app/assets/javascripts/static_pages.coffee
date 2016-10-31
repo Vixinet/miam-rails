@@ -7,15 +7,23 @@ $(document).on "turbolinks:load", ->
   $(".typed").typed
     strings: [
       "chinois",
-      "pizza",
-      "pasta"
-      "sushis"
-      "japonais"
-      "crêpes"
-      "kebab"
-      "burger"
-      "salade"
-      "thai"
+      # "sushis",
+      # "japonais",
+      # "crêpes",
+
+      "africain", 
+      "burger", 
+      "thaï", 
+      "pasta", 
+      "pizza", 
+      "lasagne", 
+      "panini", 
+      "kebab", 
+      "falafel", 
+      "sandwich", 
+      "salade", 
+      "tartare", 
+      "brésilien"
     ]
     shuffle: true
     loop: true
