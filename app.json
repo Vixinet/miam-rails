@@ -1,6 +1,8 @@
 {
   "name": "miam-rails",
   "scripts": {
+    "postdeploy": "rake db:migrate"
+    "postdeploy": "rake db:seed"
   },
   "env": {
     "INTERCOM_ACCESS_TOKEN": {
@@ -51,5 +53,5 @@
     {
       "url": "heroku/ruby"
     }
-  ]
+  ],
 }
