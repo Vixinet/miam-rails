@@ -12,11 +12,6 @@
   </div>
 </header>
 
-<div class="visible-xs">xs</div>
-<div class="visible-sm">sm</div>
-<div class="visible-md">md</div>
-<div class="visible-lg">lg</div>
-
 <main>
   <section class="intro">
     <div class="container">
@@ -38,39 +33,6 @@
         </div>
         <div class="col-lg-4 col-lg-offset-1">
 
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cities">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-7 col-md-push-4 col-lg-6 col-lg-offset-1 col-lg-push-4">
-          <p class="lead">
-            Aidez-nous à determiner où notre service sera le plus utile.
-          </p>
-          <p class="lead">Si vous pensez que votre ville nécessite d'un service de livraison à domicile, n'hésitez pas à inscrire votre ville ci-dessous ou à voter pour une des villes déjà en lisse pour le titre!</p>
-        </div>
-
-        <div class="col-md-4 col-md-pull-7 col-lg-3 col-lg-offset-1 col-lg-pull-7">
-          <div class="list-group list-primary cities">
-            <% @cities.each do |city| %>
-              <%= link_to vote_city_path(city.id), method: :put, class: "list-group-item", remote: true  do %>
-                <%= city.label.split.map(&:capitalize).join(' ') %> <span class="badge"><%= city.votes %> votes</span>
-              <% end %>
-               <!--  -->
-            <% end %>
-          </div>
-          <%= form_for(@city, remote: true) do |f| %>
-            <div class="input-group cities-add" id="city_add">
-              <%= f.text_field :label, class: "form-control input-lg", placeholder: "Nouvelle ville" %>
-              <span class="input-group-btn">
-                <%= f.submit "🏆", class: 'btn btn-lg btn-default' %>
-              </span>
-            </div>
-          <% end %>
         </div>
       </div>
     </div>
@@ -98,18 +60,71 @@
       </div>
     </div>
   </section>
-  <section>
+
+  <section class="cities">
     <div class="container">
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 col-lg-offset-1">
-          <h3>Patron d'établissement</h3>
-          <p class="">Vous souhaitez augmenter votre chiffre d'affaire en nous déléguant votre service de livraison? Contactez-nous à <a href="mailto:hello@miam.ch">hello@miam.ch</a>.</p>
+
+        <div class="col-md-7 col-md-push-4 col-lg-6 col-lg-offset-1 col-lg-push-4">
+          <p class="lead">
+            Aidez-nous à determiner où notre service sera le plus utile.
+          </p>
+          <p class="lead">Si vous pensez que votre ville nécessite d'un service de livraison à domicile, n'hésitez pas à inscrire votre ville ci-dessous ou à voter pour une des villes déjà en lisse pour le titre!</p>
+
+          <%= form_for(@city, remote: true) do |f| %>
+            <div class="input-group cities-add" id="city_add">
+              <%= f.text_field :label, class: "form-control input-lg", placeholder: "Nouvelle ville" %>
+              <span class="input-group-btn">
+                <%= f.submit "🏆", class: 'btn btn-lg btn-default' %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="col-md-4 col-md-pull-7 col-lg-3 col-lg-offset-1 col-lg-pull-7">
+          <div class="list-group list-primary cities">
+            <% @cities.each do |city| %>
+              <%= link_to cookies.permanent[:voted_city] ? '#' : vote_city_path(city.id), method: :put, class: "list-group-item", remote: true  do %>
+                <%= city.label.split.map(&:capitalize).join(' ') %> 
+                <% if cookies.permanent[:voted_city] %>
+                  <% if cookies.permanent[:voted_city].to_s == city.id.to_s %>
+                    &#128077;
+                  <% end %>
+                <% else %>
+                  <span class="badge vote">voter</span>
+                <% end %>
+              <% end %>
+               <!--  -->
+            <% end %>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+        <div class="col-sm-6 col-md-4 col-lg-5 col-lg-offset-1 col-centered">
+          <h3 class="text-center">Patron d'établissement</h3>
+          <p class="text-center lead">Vous souhaitez augmenter votre chiffre d'affaire en nous déléguant votre service de livraison? Contactez-nous sur <a href="mailto:hello@miam.ch">hello@miam.ch</a>.</p>
+        </div>
+
     </div>
   </section>
 </main>
 
 <footer>
-
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 col-lg-offset-1">
+          &copy; Miam 2016
+        </div>
+        <div class="col-sm-7 text-right">
+          <a href="https://www.facebook.com/miamsuisse/" target="_blank">On est sur Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </footer>
