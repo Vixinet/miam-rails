@@ -1,5 +1,5 @@
 {
-  "name": "miam-rails",
+  "name": "staging-miam-rails",
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate && bundle exec rake db:seed"
   },
@@ -32,6 +32,12 @@
       "required": true
     },
     "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "STRIPE_API_KEY": {
+      "required": true
+    },
+    "STRIPE_PUBLIC_KEY": {
       "required": true
     }
   },
