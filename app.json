@@ -44,8 +44,6 @@
     }
   },
   "addons": [
-    "logentries",
-    "newrelic",
     "heroku-postgresql"
   ],
   "buildpacks": [

@@ -13,7 +13,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'json'
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 gem "typedjs-rails", "~> 1.0.4"
 gem "intercom-rails"
 gem "intercom"
@@ -44,8 +44,8 @@ end
 
 group :production do
   gem 'pg'
-  # gem 'rack-timeout' # heroku related
-  # gem 'newrelic_rpm' # on-demand application performance management
+  gem 'rack-timeout' # heroku related
+  gem 'newrelic_rpm' # on-demand application performance management
   # gem 'exceptiontrap'
 end
 
