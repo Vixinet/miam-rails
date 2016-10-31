@@ -7,6 +7,7 @@ class CitiesController < ApplicationController
 
     respond_to do |format|
       if @city.save
+        cookies.permanent[:voted_city] = params[:id]
         format.js { render :nothing => true }
       else
         format.js { render :nothing => true, :status => 400 }

@@ -6,6 +6,11 @@ class OptInsController < ApplicationController
 
     respond_to do |format|
       if @opt_in.save
+        puts "@opt_in.email #{@opt_in.email}"
+        puts "#{Rails.application.secrets.intercom_access_token}"
+        intercom = Intercom::Client.new(token: Rails.application.secrets.intercom_access_token)
+        intercom.contacts.create(:email => @opt_in.email)
+        
         format.js { render :nothing => true }
       else
         format.js { render :nothing => true, :status => 400 }
