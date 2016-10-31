@@ -1,0 +1,56 @@
+{
+  "name": "miam-rails",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake db:seed"
+  },
+  "env": {
+    "INTERCOM_ACCESS_TOKEN": {
+      "required": true
+    },
+    "INTERCOM_APP_ID": {
+      "required": true
+    },
+    "INTERCOM_APP_SECRET": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "NEW_RELIC_APP_NAME": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1
+    },
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "logentries",
+    "newrelic",
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+}
