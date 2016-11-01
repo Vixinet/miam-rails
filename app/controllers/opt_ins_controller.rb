@@ -16,7 +16,6 @@ class OptInsController < ApplicationController
         if @visitor_id.blank?  
           intercom.contacts.create(:email => @opt_in.email)
         else
-
           # Convert user to Leaed
           response = HTTParty.post(
             'https://api.intercom.io/visitors/convert', 
@@ -38,13 +37,22 @@ class OptInsController < ApplicationController
           # If we don't find a visitor, it's a lead
           @lead_user_id = response.code == 404 ? @visitor_id : response.body[:user_id]
 
-          puts @lead_user_id
+          response = HTTParty.post(
+            'https://api.intercom.io/contacts', 
+            :body => { 
+              :user_id => @visitor_id,
+              :email => @opt_in.email
+            }.to_json,
+            :basic_auth => {
+              :username => Rails.application.secrets.intercom_access_token
+            },
+            :headers => {
+              'Content-Type' => 'application/json', 
+              'Accept' => 'application/json'
+            }
+          )
 
-          # Update Lead with email
-          contact = intercom.contacts.find(:user_id => @lead_user_id)
-          contact.email = @opt_in.email
-          puts contact.inspect
-          intercom.contacts.save(contact)
+          puts response.inspect
         end
         
         format.js { render :nothing => true }
