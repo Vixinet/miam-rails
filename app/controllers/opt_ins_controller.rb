@@ -20,9 +20,9 @@ class OptInsController < ApplicationController
                 :user_id => lead.user_id 
               }, 
               :type => "lead" 
-            },
+            }.to_json,
             :basic_auth => {
-              :usernam => Rails.application.secrets.intercom_access_token
+              :username => Rails.application.secrets.intercom_access_token
             },
             :headers => {
               'Content-Type' => 'application/json', 
@@ -30,7 +30,7 @@ class OptInsController < ApplicationController
             }
           )
 
-          response.inspect
+          puts response.inspect
         end
         
         format.js { render :nothing => true }
