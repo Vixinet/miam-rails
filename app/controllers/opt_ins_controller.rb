@@ -12,7 +12,8 @@ class OptInsController < ApplicationController
         lead = intercom.contacts.create(:email => @opt_in.email)
         
         unless opt_in_params[:visitor_id].blank?
-          HTTParty.post(
+
+          response = HTTParty.post(
             'https://api.intercom.io/visitors/convert', 
             :body => { 
               :visitor => { 
@@ -28,6 +29,8 @@ class OptInsController < ApplicationController
               'Accept' => 'application/json'
             }
           )
+
+          response.inspect
         end
         
         format.js { render :nothing => true }
