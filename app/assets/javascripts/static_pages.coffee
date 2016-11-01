@@ -6,7 +6,7 @@
 $(document).on "turbolinks:load", ->
   $(".typed").typed
     strings: [
-      "chinois",
+      # "chinois",
       # "sushis",
       # "japonais",
       # "crêpes",
@@ -48,16 +48,17 @@ $(document).on "turbolinks:load", ->
     # fbq('track', 'Lead')
   
   $("#new_opt_in").on "ajax:error", ->
-    toastr.error("&#128557; Une erreur est survenue. Êtes-vous certain d'avoir remplis le bon email?", {timeOut: 10000})
+    toastr.error("&#128557; Une erreur est survenue. Êtes-vous certain d'avoir indiqué email valide?", {timeOut: 10000})
 
   $("#new_city").on "ajax:success", ->
-    $("#new_city").html "<p class=\"text-center\">Ville enregistrée. Notre équipe dois la validée avant l'affichage sur le site. &#128077;</p>"
-    fbq('track', 'Lead')
+    $("#new_city").html "<p class=\"text-center\">Ville enregistrée. Notre équipe doit la valider avant de l'afficher sur le site. &#128077;</p>"
   
   $("#new_city").on "ajax:error", ->
     toastr.error("Avez-vous ajouté votre nom de ville dans le champs texte?", {timeOut: 10000})
 
   $(".list-group-item").on "ajax:success", ->
+    $(".list-group-item").attr('href', '#');
+    $(this).append('&#128077;').attr('href', '#');
     $('.badge.vote').remove();
     toastr.info("Vote pris en compte! &#128077;", {timeOut: 10000})
 
