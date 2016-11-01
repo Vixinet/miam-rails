@@ -30,8 +30,6 @@ $(document).on "turbolinks:load", ->
     typeSpeed: 50,
     backSpeed: 30,
     backDelay: 700
-  
-  $('#opt_in_visitor_id').val Intercom('getVisitorId')
 
   $('.list-group.cities').addClass("animate-hidden").viewportChecker
     classToAdd: 'animate-visible animated fadeInLeft'
@@ -44,6 +42,10 @@ $(document).on "turbolinks:load", ->
 
   $('.optins .titles').addClass("animate-hidden").viewportChecker
     classToAdd: 'animate-visible animated fadeInUp'
+
+  $('#new_opt_in').on "submit", ->
+    if Intercom && Intercom('getVisitorId')
+      $('#opt_in_visitor_id').val Intercom('getVisitorId')
 
   $("#new_opt_in").on "ajax:success", ->
     $("#new_opt_in").html "<p class=\"lead\">Inscription prise en compte. &#128077;</p>"
