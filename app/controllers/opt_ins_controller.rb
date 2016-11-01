@@ -8,11 +8,11 @@ class OptInsController < ApplicationController
       if @opt_in.save
         puts "**** opt_in_params[:visitor_id]=#{opt_in_params[:visitor_id]}"
         
-        intercom = Intercom::Client.new(token: Rails.application.secrets.intercom_access_token)
-        lead = intercom.contacts.create(:email => @opt_in.email)
-        
-        unless opt_in_params[:visitor_id].blank?
-
+        if opt_in_params[:visitor_id].blank?
+          intercom = Intercom::Client.new(token: Rails.application.secrets.intercom_access_token)
+          intercom.contacts.create(:email => @opt_in.email)
+        else
+          # Convert user to Leaed
           response = HTTParty.post(
             'https://api.intercom.io/visitors/convert', 
             :body => { 
@@ -31,6 +31,12 @@ class OptInsController < ApplicationController
           )
 
           puts response.inspect
+          puts response.user_id
+
+          # Update Lead with email
+          contact = intercom.contacts.find(:user_id => response.user_id)
+          contact.email = @opt_in.email
+          intercom.contacts.save(contact)
         end
         
         format.js { render :nothing => true }
