@@ -6,11 +6,11 @@ class OptInsController < ApplicationController
 
     respond_to do |format|
       if @opt_in.save
-        
+
         puts "**** opt_in_params[:visitor_id]=#{opt_in_params[:visitor_id]}"
-        
-        if opt_in_params[:visitor_id].blank?
-          intercom = Intercom::Client.new(token: Rails.application.secrets.intercom_access_token)
+        intercom = Intercom::Client.new(token: Rails.application.secrets.intercom_access_token)
+
+        if opt_in_params[:visitor_id].blank?  
           intercom.contacts.create(:email => @opt_in.email)
         else
           # Convert user to Leaed
