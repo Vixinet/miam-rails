@@ -11,11 +11,17 @@ class OptInsController < ApplicationController
 
         @visitor_id = opt_in_params[:visitor_id]        
 
+        puts "visitor_id=#{@visitor_id}"
+
         # It might happen the user clicks on submit the email before getting
         # the Intercom visitor Id (if Intercom isn't initialized)
         if @visitor_id.blank?  
+          puts "- Create lead from email"
           intercom.contacts.create(:email => @opt_in.email)
         else
+
+          puts "- Try convert visitor"
+
           # Convert user to Leaed
           response = HTTParty.post(
             'https://api.intercom.io/visitors/convert', 
@@ -36,20 +42,19 @@ class OptInsController < ApplicationController
 
           # If we don't find a visitor, it's a lead
           if response.code == 404
-            puts "** Visitor not found"
+            puts "-- Visitor not found"
             @lead_user_id = @visitor_id 
           else 
-            puts "** Visitor not found"
-            puts response.inspect
-            puts response.body.inspect
-            puts response.body[:user_id]
-            response.body[:user_id]
+            puts "-- Visitor found"
+            puts response.parsed_response['user_id']
+            puts response.parsed_response.user_id
+            @lead_user_id = response.parsed_response['user_id'];
           end
 
           response = HTTParty.post(
             'https://api.intercom.io/contacts', 
             :body => { 
-              :user_id => @visitor_id,
+              :user_id => @lead_user_id,
               :email => @opt_in.email
             }.to_json,
             :basic_auth => {
@@ -61,7 +66,7 @@ class OptInsController < ApplicationController
             }
           )
 
-          puts response.inspect
+          puts "-- Update contact: #{response.code}"
         end
         
         format.js { render :nothing => true }
