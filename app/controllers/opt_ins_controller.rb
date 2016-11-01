@@ -6,6 +6,7 @@ class OptInsController < ApplicationController
 
     respond_to do |format|
       if @opt_in.save
+        
         puts "**** opt_in_params[:visitor_id]=#{opt_in_params[:visitor_id]}"
         
         if opt_in_params[:visitor_id].blank?
@@ -17,7 +18,7 @@ class OptInsController < ApplicationController
             'https://api.intercom.io/visitors/convert', 
             :body => { 
               :visitor => { 
-                :user_id => lead.user_id 
+                :user_id => intercom.visitors.find(:id => opt_in_params[:visitor_id]).user_id
               }, 
               :type => "lead" 
             }.to_json,
