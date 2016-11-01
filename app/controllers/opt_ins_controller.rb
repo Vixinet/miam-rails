@@ -35,7 +35,16 @@ class OptInsController < ApplicationController
           )
 
           # If we don't find a visitor, it's a lead
-          @lead_user_id = response.code == 404 ? @visitor_id : response.body[:user_id]
+          if response.code == 404
+            puts "** Visitor not found"
+            @lead_user_id = @visitor_id 
+          else 
+            puts "** Visitor not found"
+            puts response.inspect
+            puts response.body.inspect
+            puts response.body[:user_id]
+            response.body[:user_id]
+          end
 
           response = HTTParty.post(
             'https://api.intercom.io/contacts', 
