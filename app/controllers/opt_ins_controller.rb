@@ -18,7 +18,7 @@ class OptInsController < ApplicationController
             'https://api.intercom.io/visitors/convert', 
             :body => { 
               :visitor => { 
-                :user_id => intercom.visitors.find(:id => opt_in_params[:visitor_id]).user_id
+                :user_id => opt_in_params[:visitor_id]
               }, 
               :type => "lead" 
             }.to_json,
