@@ -6,10 +6,29 @@ class OptInsController < ApplicationController
 
     respond_to do |format|
       if @opt_in.save
-        puts "@opt_in.email #{@opt_in.email}"
-        puts "#{Rails.application.secrets.intercom_access_token}"
+        puts "**** opt_in_params[:visitor_id]=#{opt_in_params[:visitor_id]}"
+        
         intercom = Intercom::Client.new(token: Rails.application.secrets.intercom_access_token)
-        intercom.contacts.create(:email => @opt_in.email)
+        lead = intercom.contacts.create(:email => @opt_in.email)
+        
+        unless opt_in_params[:visitor_id].blank?
+          HTTParty.post(
+            'https://api.intercom.io/visitors/convert', 
+            :body => { 
+              :visitor => { 
+                :user_id => lead.user_id 
+              }, 
+              :type => "lead" 
+            },
+            :basic_auth => {
+              :usernam => Rails.application.secrets.intercom_access_token
+            },
+            :headers => {
+              'Content-Type' => 'application/json', 
+              'Accept' => 'application/json'
+            }
+          )
+        end
         
         format.js { render :nothing => true }
       else
@@ -20,6 +39,6 @@ class OptInsController < ApplicationController
 
   private
     def opt_in_params
-      params.require(:opt_in).permit(:email)
+      params.require(:opt_in).permit(:email, :visitor_id)
     end
 end

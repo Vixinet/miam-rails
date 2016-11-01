@@ -48,6 +48,7 @@
           <%= form_for(@opt_in, remote:true) do |f| %>
             <div class="input-group">
               <%= f.email_field :email, class: "form-control input-lg", placeholder: "Votre e-mail" %>
+              <%= f.text_field :visitor_id %>
               <span class="input-group-btn">
                 <%= f.submit "Invitez-moi!", class: 'btn btn-default btn-lg' %>
               </span>

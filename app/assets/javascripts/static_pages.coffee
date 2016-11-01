@@ -31,6 +31,8 @@ $(document).on "turbolinks:load", ->
     backSpeed: 30,
     backDelay: 700
   
+  $('#opt_in_visitor_id').val Intercom('getVisitorId')
+
   $('.list-group.cities').addClass("animate-hidden").viewportChecker
     classToAdd: 'animate-visible animated fadeInLeft'
 

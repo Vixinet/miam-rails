@@ -10,6 +10,7 @@ gem 'json'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'bcrypt'
+gem 'httparty'
 
 # Front End
 gem 'jquery-rails', '~> 4.2.1'
