@@ -46,8 +46,6 @@ class OptInsController < ApplicationController
             @lead_user_id = @visitor_id 
           else 
             puts "-- Visitor found"
-            puts response.parsed_response['user_id']
-            puts response.parsed_response.user_id
             @lead_user_id = response.parsed_response['user_id'];
           end
 
