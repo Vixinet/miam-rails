@@ -32,10 +32,10 @@ class OptInsController < ApplicationController
           )
 
           puts response.inspect
-          puts response.user_id
+          puts response.parsed_response.user_id
 
           # Update Lead with email
-          contact = intercom.contacts.find(:user_id => response.user_id)
+          contact = intercom.contacts.find(:user_id => response.parsed_response.user_id)
           contact.email = @opt_in.email
           intercom.contacts.save(contact)
         end
