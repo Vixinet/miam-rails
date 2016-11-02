@@ -193,11 +193,8 @@ DEPENDENCIES
   bootstrap-will_paginate
   byebug
   coffee-rails (~> 4.2)
-<<<<<<< HEAD
   geocoder
-=======
   httparty
->>>>>>> master
   intercom
   intercom-rails
   jbuilder
