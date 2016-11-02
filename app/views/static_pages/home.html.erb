@@ -19,7 +19,7 @@
         <div class="col-md-8 col-lg-7 col-lg-offset-1">
           <h1>Petite faim?</h1>
           <p class="lead">
-            Tout le monde a un restaurant favori! Miam s'engage à vous livrez les plats de votre restaurant préféré directement au seuil de votre porte. 
+            Tout le monde a un restaurant favori! Miam s'engage à vous livrer les plats de votre restaurant préféré directement au seuil de votre porte. 
           </p>
           <p class="lead">
             Grâce à notre système de paiement en ligne, plus besoin d'avoir d'espèces sur vous. Réglez lors de la commande en toute sécurité: plus de perte de temps ou de monnaie à rendre.
@@ -28,7 +28,7 @@
             Miam aborde la livraison à domicile d'une toute nouvelle manière. Avec nous, les plats de votre restaurant préféré, chauds et en moins de 45 minutes chez vous.
           </p>
           <p class="lead">
-            <i>Cliqué, c'est livré!</i>
+            <i>Cliquez, c'est livré!</i>
           </p>
         </div>
       </div>
@@ -48,6 +48,7 @@
           <%= form_for(@opt_in, remote:true) do |f| %>
             <div class="input-group">
               <%= f.email_field :email, class: "form-control input-lg", placeholder: "Votre e-mail" %>
+              <%= f.hidden_field :visitor_id %>
               <span class="input-group-btn">
                 <%= f.submit "Invitez-moi!", class: 'btn btn-default btn-lg' %>
               </span>
@@ -64,7 +65,7 @@
 
         <div class="col-md-7 col-md-push-4 col-lg-6 col-lg-offset-1 col-lg-push-4">
           <p class="lead">Miam se lance dans la ville la plus populaire.</p>
-          <p class="lead">Vous souhaitez voir apparaître Miam dans votre ville en avant-première? Votez pour celle-ci dans la liste des villes ou si elle n'y est pas encore, inscrivez là ci-dessous.</p>
+          <p class="lead">Vous souhaitez voir apparaître Miam dans votre ville en avant-première? Votez pour celle-ci dans la liste des villes ou si elle n'y est pas encore, inscrivez-la ci-dessous.</p>
           <p class="lead">Ne manquez pas l'occasion, tous les votes comptent.</p>
 
           <%= form_for(@city, remote: true) do |f| %>
