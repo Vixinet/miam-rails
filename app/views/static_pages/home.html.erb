@@ -16,7 +16,7 @@
   <section class="intro">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-lg-7 col-lg-offset-1">
+        <div class="col-md-7">
           <h1>Petite faim?</h1>
           <p class="lead">
             Tout le monde a un restaurant favori! Miam s'engage à vous livrer les plats de votre restaurant préféré directement au seuil de votre porte. 
@@ -31,82 +31,10 @@
             <i>Cliquez, c'est livré!</i>
           </p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="optins">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 titles">
-          <h2 class="text-center">Soyez parmi les premiers</h2>
-          <p class="lead text-center">Inscrivez-vous maintenant et bénéficiez d'un accès à Miam en avant-première!</p>
+        <div class="col-md-5">
+          <%= link_to 'Venues', venues_url %>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-center">
-          <%= form_for(@opt_in, remote:true) do |f| %>
-            <div class="input-group">
-              <%= f.email_field :email, class: "form-control input-lg", placeholder: "Votre e-mail" %>
-              <%= f.hidden_field :visitor_id %>
-              <span class="input-group-btn">
-                <%= f.submit "Invitez-moi!", class: 'btn btn-default btn-lg' %>
-              </span>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cities">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-7 col-md-push-4 col-lg-6 col-lg-offset-1 col-lg-push-4">
-          <p class="lead">Miam se lance dans la ville la plus populaire.</p>
-          <p class="lead">Vous souhaitez voir apparaître Miam dans votre ville en avant-première? Votez pour celle-ci dans la liste des villes ou si elle n'y est pas encore, inscrivez-la ci-dessous.</p>
-          <p class="lead">Ne manquez pas l'occasion, tous les votes comptent.</p>
-
-          <%= form_for(@city, remote: true) do |f| %>
-            <div class="input-group cities-add" id="city_add">
-              <%= f.text_field :label, class: "form-control input-lg", placeholder: "Nouvelle ville" %>
-              <span class="input-group-btn">
-                <%= f.submit "🏆", class: 'btn btn-lg btn-default' %>
-              </span>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="col-md-4 col-md-pull-7 col-lg-3 col-lg-offset-1 col-lg-pull-7">
-          <div class="list-group list-primary cities">
-            <% @cities.each do |city| %>
-              <%= link_to cookies.permanent[:voted_city] ? '#' : vote_city_path(city.id), method: :put, class: "list-group-item", remote: true  do %>
-                <%= city.label.split.map(&:capitalize).join(' ') %> 
-                <% if cookies.permanent[:voted_city] %>
-                  <% if cookies.permanent[:voted_city].to_s == city.id.to_s %>
-                    &#128077;
-                  <% end %>
-                <% else %>
-                  <span class="badge vote">voter</span>
-                <% end %>
-              <% end %>
-               <!--  -->
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-
-        <div class="col-sm-7 col-md-6 col-lg-5 col-lg-offset-1 col-centered">
-          <h3 class="text-center">Patron d'établissement</h3>
-          <p class="text-center lead">Vous souhaitez augmenter votre chiffre d'affaire en nous déléguant votre service de livraison? Contactez-nous sur <a href="mailto:hello@miam.ch">hello@miam.ch</a>.</p>
-        </div>
-
     </div>
   </section>
 </main>
@@ -115,11 +43,15 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6 col-lg-5 col-lg-offset-1">
+        <div class="col-md-6">
           &copy; Miam 2016
         </div>
-        <div class="col-xs-6 col-md-6 col-lg-5 text-right">
-          <a href="https://www.facebook.com/miamsuisse/" target="_blank">Miam sur Facebook</a>
+        <div class="col-md-6 text-right">
+          <ul class="list-inline list-unstyled">
+            <li><%= link_to "Support", "#" %></li>
+            <li><%= link_to "Coursier", "#" %></li>
+            <li><%= link_to "Etablissement", "#" %></li>
+          </ul>
         </div>
       </div>
     </div>

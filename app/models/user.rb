@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 	before_save { self.email = email.downcase }
 	before_save :set_invitation_code
+	
 	validates :email, presence: true, length: { maximum: 255 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }
 	validates :password, length: { minimum: 6 }, :if => :password
 	validates :invitation_code, :uniqueness => true

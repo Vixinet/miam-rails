@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031222947) do
+ActiveRecord::Schema.define(version: 20161102142451) do
 
   create_table "cities", force: :cascade do |t|
     t.integer  "status"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20161031222947) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "multi_choice_limit",  default: 0
+    t.integer  "order"
     t.index ["product_id"], name: "index_product_variations_on_product_id"
   end
 
@@ -94,6 +95,8 @@ ActiveRecord::Schema.define(version: 20161031222947) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.integer  "multi_choice_limit",   default: 0
+    t.boolean  "default",              default: false
+    t.integer  "order"
     t.index ["product_variation_id"], name: "index_variation_options_on_product_variation_id"
   end
 
@@ -113,6 +116,7 @@ ActiveRecord::Schema.define(version: 20161031222947) do
     t.float    "longitude"
     t.string   "street"
     t.string   "city_name"
+    t.string   "description"
     t.index ["city_id"], name: "index_venues_on_city_id"
     t.index ["merchant_id"], name: "index_venues_on_merchant_id"
   end

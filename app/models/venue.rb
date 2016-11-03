@@ -20,6 +20,10 @@ class Venue < ApplicationRecord
   
   enum status: [:editing, :live, :offline]
 
+  def live_product_groups
+    product_groups.where(:status => :live).order(:order)
+  end 
+
   def website_url_with_assumed_protocol
     url = self[:website]
     unless url.starts_with?("http") 
