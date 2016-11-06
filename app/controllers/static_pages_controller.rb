@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   
-  layout 'public'
+  layout 'app'
   
   def home
   	@city = City.new
