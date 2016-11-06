@@ -10,7 +10,7 @@
     width: 100%;
     background: url(asset-path('home/bg-panning.jpg')) top left no-repeat fixed;
     background-size: cover;
-    padding: 150px 0;
+    padding: 50px 0;
     color: white;
 
     &:after {
@@ -24,7 +24,7 @@
       z-index:10;
     }
 
-    & .container {
+    & > div {
       position: relative;
       z-index:20;
     }

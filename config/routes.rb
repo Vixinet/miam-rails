@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :venues
+  namespace :admin do
+    resources :users
+  end
   resources :opt_ins, :only => [:create]
   resources :cities, :only => [:create]
 

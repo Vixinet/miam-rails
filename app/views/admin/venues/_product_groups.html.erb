@@ -1,4 +1,4 @@
-<% @venue.product_groups.each do |product_group| %>
+<% @venue.product_groups.order(:order).each do |product_group| %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <% if product_group.live? %>

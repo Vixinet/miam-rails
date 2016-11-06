@@ -1,6 +1,8 @@
-<% @product.product_variations.each do |product_variation| %>
+<% @product.product_variations.order(:order).each do |product_variation| %>
   <div class="panel panel-default">
     <div class="panel-heading">
+      <span class="label label-default"><%= product_variation.order %></span>
+      
       <% if product_variation.allow_multi_choices? %>
         <span class="label label-success">Multi choice</span>
       <% else %>
