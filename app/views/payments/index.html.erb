@@ -1,0 +1,24 @@
+<h3>Méthodes de paiement</h3>
+
+<table class="table">
+  <tbody>
+  <% @payments.data.each do |payment| %>
+    <tr>
+      <td class="light">
+        <%= image_tag 'cc-visa.png', :class => 'credit_card' if payment.brand == 'Visa' %>
+        <%= image_tag 'cc-amex.png', :class => 'credit_card' if payment.brand == 'American Express' %>
+        <%= image_tag 'cc-mastercard.png', :class => 'credit_card' if payment.brand == 'MasterCard' %>
+        <%= image_tag 'cc-discover.png', :class => 'credit_card' if payment.brand == 'Discover' %>
+        <%= image_tag 'cc-jcb.png', :class => 'credit_card' if payment.brand == 'JCB' %>
+        <%= image_tag 'cc-diners.png', :class => 'credit_card' if payment.brand == 'Diners Club' %>
+        <%= image_tag 'cc-credit.png', :class => 'credit_card' if payment.brand == 'Unknown' %>
+        •••• •••• •••• <%= payment.last4 %>	
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p class="text-center">
+  <%= link_to 'Nouvelle méthode de paiement', new_payment_path %>
+</p>

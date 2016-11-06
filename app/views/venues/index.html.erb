@@ -1,18 +1,36 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="list-group">
-        <% @venues.each do |venue| %>
-          <%= link_to venue, class: "list-group-item" do %>
-            <h4 class="list-group-item-heading"><%= venue.name %></h4>
-            <p class="list-group-item-text"><%= venue.title %></p>
-            <!-- ToDo Image -->
-          <% end %>
-        <% end %>
+<% @noheader = true %>  
+
+<header>
+  <%= render partial: 'layouts/app/navbar' %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="text-center">
+          Grâce à <%= image_tag('logo-white@0.25x.png')  %><br/>
+          ce soir c'est <br class="visible-xs" /><span class="typed"></span>
+        </h1>
       </div>
     </div>
-    <div class="col-lg-8">
-      <!-- ToDo Map -->
-    </div>
+  </div>
+</header>
+
+<div class="container venues">
+  <h1>Restaurants à Sierre</h1>
+  <div class="row">
+    <% @venues.each do |venue| %>
+      <div class="col-sm-3 venu-container">
+        <%= link_to venue do %>
+        <div class="venue-bloc">
+          <header>
+            <%= image_tag(venue.venue_thumbnail_picture.url, class: "cover-image") if venue.venue_thumbnail_picture.file %>
+          </header>
+          <div class="body">
+            <p class="title"><%= venue.name %></p>
+            <p class="desc"><%= venue.title %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

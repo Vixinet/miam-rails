@@ -1,4 +1,7 @@
 class Venue < ApplicationRecord
+  mount_uploader :venue_picture, VenuePictureUploader
+  mount_uploader :venue_thumbnail_picture, VenueThumbnailPictureUploader
+  
   after_validation :geocode, :if => Proc.new { |a| a.street_changed? || a.city_name_changed? }
 
   validates :name, presence: true

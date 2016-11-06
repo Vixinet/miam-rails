@@ -1,22 +1,36 @@
 class SessionsController < ApplicationController
-  layout 'public'
+  before_action :logged_in_user, :only => [:show, :credits]
+
+  layout 'account'
+  
+  def show
+  end
+
+  def credits
+  end
 
 	def new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      remember(user)
-      if user.admin?
-        redirect_to admin_url
-      else 
-        redirect_to root_url
+    respond_to do |format|
+      user = User.find_by(email: params[:session][:email].downcase)
+      if user && user.authenticate(params[:session][:password])
+        log_in user
+        remember(user)
+        format.html { redirect_to account_url }
+        format.js { redirect_to account_url }
+      else
+        format.html { render :new }
+        format.js { 
+          flash.now[:error] = 'Invalid email/password combination'
+          render partial:'layouts/handle_flashes'
+        }
       end
-    else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
     end
   end
 

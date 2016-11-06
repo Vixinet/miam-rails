@@ -1,0 +1,27 @@
+<div id="login_overlay" class="login_overlay">
+  <%= form_for(:session, url: login_path, remote: true) do |f| %>
+
+      <div class="form-group">
+        <%= link_to "#", :class => 'btn btn-facebook btn-social btn-block' do %>
+          <%= fa_icon :facebook %> Utiliser facebook
+        <% end %>
+      </div>
+
+      <p class="or">- ou -</p>
+
+      <div class="form-group">
+        <%= f.email_field :email, class: "form-control", placeholder: "e-mail" %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password, class: "form-control", placeholder: "password" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Se connecter", class: "btn btn-primary btn-block" %> 
+      </div>
+
+      <hr />
+
+      <p class="forgot_password">Mot de passe oublié? <br/>Envoyez nous un email à <a href="mailto:hello@miam.ch">hello@miam.ch</a> <br/>depuis l'adresse email attachée au compte.</p>
+
+  <% end %>
+</div>

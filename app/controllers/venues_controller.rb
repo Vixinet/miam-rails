@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show]
 
-  layout 'venues'
+  layout 'app'
 
   # GET /venues
   def index
