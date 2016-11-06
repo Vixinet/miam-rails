@@ -1,0 +1,27 @@
+<h3>Vue d'ensemble</h3>
+<table class="table">
+  <tr>
+    <th>Nom</th>
+    <td><%= current_user.name %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= link_to current_user.email, "mailto:#{current_user.email}" %></td>
+  </tr>
+  <tr>
+    <th>Téléphone</th>
+    <td><%= link_to current_user.phone, "tel:#{current_user.phone}" %></td>
+  </tr>
+  <tr>
+    <th>Code d'invitation</th>
+    <td><%= current_user.invitation_code.upcase %></td>
+  </tr>
+  <tr>
+    <th>Crédits</th>
+    <td>CHF <%= number_with_precision(current_user.credits, :precision => 0) %></td>
+  </tr>
+  <tr>
+    <th>Entregistré depuis</th>
+    <td><%= current_user.created_at %></td>
+  </tr>
+</table>

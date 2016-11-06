@@ -1,0 +1,19 @@
+<% @user.addresses.order(:status).each do |address| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= address.street %>
+      <% if address.online? %>
+        <span class="pull-right label label-success">online</span>
+      <% else %>
+        <span class="pull-right label label-danger">deleted</span>
+      <% end %>
+    </div>
+    <div class="panel-body text-center">
+      <% if address.latitude && address.longitude %>
+      <img style="width:100%;" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= address.latitude %>,<%= address.longitude %>&zoom=16&size=640x300&markers=<%= address.latitude %>,<%= address.longitude %>" />
+      <% else %>
+        latitude &amp; longitude missing
+      <% end %>
+    </div>
+  </div>
+<% end %>

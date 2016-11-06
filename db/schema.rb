@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102142451) do
+ActiveRecord::Schema.define(version: 20161105210118) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street"
+    t.string   "city"
+    t.string   "comment"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "selected",   default: false
+    t.integer  "status"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.integer  "status"
@@ -85,6 +99,8 @@ ActiveRecord::Schema.define(version: 20161102142451) do
     t.string   "invitation_code"
     t.string   "phone"
     t.string   "name"
+    t.string   "stripe_id"
+    t.string   "profile_picture"
   end
 
   create_table "variation_options", force: :cascade do |t|
@@ -106,8 +122,8 @@ ActiveRecord::Schema.define(version: 20161102142451) do
     t.string   "title"
     t.string   "phone"
     t.string   "website"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "merchant_id"
     t.integer  "city_id"
     t.boolean  "accepts_take_away"
@@ -117,6 +133,8 @@ ActiveRecord::Schema.define(version: 20161102142451) do
     t.string   "street"
     t.string   "city_name"
     t.string   "description"
+    t.string   "venue_picture"
+    t.string   "venue_thumbnail_picture"
     t.index ["city_id"], name: "index_venues_on_city_id"
     t.index ["merchant_id"], name: "index_venues_on_merchant_id"
   end

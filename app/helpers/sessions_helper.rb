@@ -40,6 +40,10 @@ module SessionsHelper
 
   #filters
   
+  def not_logged_in_user
+    redirect_to account_url unless !logged_in?
+  end
+
   def logged_in_user
     redirect_to root_url unless logged_in?
   end

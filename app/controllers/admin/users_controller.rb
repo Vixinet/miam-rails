@@ -12,6 +12,8 @@ class Admin::UsersController < ApplicationController
 
   # GET /admin/users/1
   def show
+    Stripe.api_key =  Rails.application.secrets.stripe_api_key
+    @payments = Stripe::Customer.retrieve(current_user.stripe_id).sources.all(:limit => 100, :object => "card")
   end
 
   # GET /admin/users/new
@@ -41,8 +43,6 @@ class Admin::UsersController < ApplicationController
       params[:user].delete :password
       params[:user].delete :password_confirmation
     end
-    puts params.inspect
-    puts user_params.inspect
     if @user.update(user_params)
       flash[:success] = "User updated"
       redirect_to admin_users_url
@@ -65,6 +65,6 @@ class Admin::UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :admin, :name, :phone, :credits, :invitation_code)
+      params.require(:user).permit(:profile_picture, :email, :password, :password_confirmation, :admin, :name, :phone, :credits, :invitation_code)
     end
 end

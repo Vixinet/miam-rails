@@ -74,3 +74,58 @@ a {
     float: none !important;
     margin: 0 auto !important;
 }
+
+.popup_content {
+  background:white;
+  padding: 15px;
+  border: 1px solid rgba(112, 112, 112, 1);
+  border-radius: 8px;
+}
+
+
+@media only screen and (min-width : 768px) {
+    .is-table-row {
+        display: table;
+    }
+
+    .is-table-row > [class*="col-"] {
+        float: none;
+        display: table-cell;
+        vertical-align: top;
+    }
+}
+
+.field_with_errors {
+  & label {
+    color: #aa0000 !important;
+  }
+
+  & input {
+    border-color: #aa0000;
+  }
+}
+
+img.credit_card {
+  margin-right: 10px;
+  height: 18px;
+}
+
+.light-text {
+  color: rgb(131, 131, 131);
+}
+
+.login_overlay {
+  & .or {
+    @extend .small;
+    @extend .light-text;
+    @extend .text-center;
+    margin: 20px  auto;
+  }
+
+  & .forgot_password {
+    @extend .small;
+    @extend .light-text;
+    @extend .text-center;
+    margin : 0px;
+  }
+}

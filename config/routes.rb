@@ -1,29 +1,31 @@
 Rails.application.routes.draw do
   
-  resources :venues
-  namespace :admin do
-    resources :users
-  end
-  resources :opt_ins, :only => [:create]
-  resources :cities, :only => [:create]
+  resources :addresses, :except => [:show]
+  resources :payments, :only => [:index, :new, :create]
+  resources :venues, :only => [:show]
 
-  match '/cities/:id/vote', to: 'cities#vote', via: 'put', as: 'vote_city'
-
-  root 'static_pages#home'
+  root 'venues#index'
 
   # Static Pages
-  # match '/support', to: 'static_pages#support', via: 'get'
+  match '/support', to: 'static_pages#support', via: 'get'
+
+  get    '/account'   => 'sessions#show'
+  get    '/credits'   => 'sessions#credits'
 
   # Handle User & Sessions
+  get    'signup'  => 'users#new'
+  post   'signup'  => 'users#create'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   get    'logout'  => 'sessions#destroy'
   delete 'logout'  => 'sessions#destroy'
+  
 
   # Handle Admin space
   match '/admin', to: 'admin#home', via: 'get'  
 
   namespace :admin do
+    resources :users
     resources :cities, :except => :show
     resources :merchants
     resources :venues do

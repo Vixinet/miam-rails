@@ -75,7 +75,6 @@ $(document).on("turbolinks:load", function() {
         variation_price: _variation_price(option),
       });
       total += _quantity(option) * _variation_price(option);
-      console.log(_id(option) + '-' + _variation_price(option));
     });
 
     return { 
@@ -87,20 +86,15 @@ $(document).on("turbolinks:load", function() {
   // Methods
 
   var make_inactive = function(elem) {
-    console.log('make_inactive');
     elem.removeClass('active')
   };
 
   var make_product_active = function(product) {
-    console.log('make_product_active');
-
     make_inactive($('.product.active'));
     product.addClass('active');
   };
 
   var toggle_product = function(product) {
-    console.log('toggle_product')
-
     if(_is_active(product)) {
       make_inactive(product);
     } else {
@@ -109,8 +103,6 @@ $(document).on("turbolinks:load", function() {
   };
 
   var toggle_variation = function(variation) {
-    console.log('toggle_variation')
-
     if(_is_active(variation)) {
       make_inactive(variation);
       handle_variation_label(variation);
@@ -126,8 +118,6 @@ $(document).on("turbolinks:load", function() {
   };
 
   var handle_variation_label = function(variation) {
-    console.log('handle_variation_label')
-
     var label = variation.find('.info');
     if( _is_active(variation) ) {
       if( _allow_multi(variation) ) {
@@ -150,8 +140,6 @@ $(document).on("turbolinks:load", function() {
   };
 
   var toggle_option = function(option) {
-    console.log('toggle_option')
-
     var variation = _get_variation(option);
     if( _quantity(option) > 0 ) {
       if( _allow_multi(option) ) {
@@ -189,8 +177,6 @@ $(document).on("turbolinks:load", function() {
   };
 
   var change_option_quantity = function(option, quantity, delta) {
-    console.log('change_option_quantity')
-
     if( typeof delta === typeof undefined ) {
       var new_quantity = quantity;
     } else {
@@ -209,8 +195,6 @@ $(document).on("turbolinks:load", function() {
   };
 
   var duplicate_product = function(_this) {
-    console.log('duplicate_product')
-
     var base_product = _get_product(_this);
     var new_product = base_product.clone();
     new_product.insertAfter(base_product);
@@ -218,8 +202,6 @@ $(document).on("turbolinks:load", function() {
   };
 
   var check_product_check_box = function(_this) {
-    console.log('check_product_check_box');
-
     if(_is_active($(_this))) {
       change_product_quantity(_get_product(_this), 0);
     } else {
@@ -228,8 +210,6 @@ $(document).on("turbolinks:load", function() {
   };
 
   var change_product_quantity = function(product, quantity, delta) {
-    console.log('change_product_quantity')
-
     if(typeof delta === typeof undefined) {
       var new_quantity = quantity;
     } else {
@@ -249,8 +229,6 @@ $(document).on("turbolinks:load", function() {
   // UI
 
   var refresh_ui = function(product) {
-    console.log('refresh_ui')
-
     var quantity = _quantity(product);
     var base_price = _base_price(product) + _get_options_and_total(product).total;
     var total_price = base_price * quantity;
@@ -332,4 +310,5 @@ $(document).on("turbolinks:load", function() {
   $('.products .product').each(function(index, product) {
     refresh_ui($(product));
   })
+  
 });

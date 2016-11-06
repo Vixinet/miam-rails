@@ -2,10 +2,36 @@
   <div class="panel-heading">User</div>
   <div class="panel-body">
     <p class="lead">
-      <%= @user.email %>
+      <%= @user.name %>
       <% if @user.admin? %>
         <span class="label label-success pull-right">admin</span>
       <% end %>
+    <%= fa_icon :email %>
+    <p><%= fa_icon "envelope-o" %> <%= link_to @user.email, "mailto:#{@user.email}" %></p>
+    <p><%= fa_icon :phone %> <%= link_to @user.phone, "tel:#{@user.phone}" %></p>
+    <p><%= fa_icon "cc-stripe" %> 
+    <%= link_to @user.stripe_id, "https://dashboard.stripe.com#{"/test" unless Rails.env.production?}/customers/#{@user.stripe_id}" %></p>
+  </div>
+  <div class="panel-heading">Credit Cards</div>
+  <div class="panel-body">
+  <% @payments.data.each do |payment| %> 
+  	<p>
+	<%= image_tag 'cc-visa.png', :class => 'credit_card' if payment.brand == 'Visa' %>
+    <%= image_tag 'cc-amex.png', :class => 'credit_card' if payment.brand == 'American Express' %>
+    <%= image_tag 'cc-mastercard.png', :class => 'credit_card' if payment.brand == 'MasterCard' %>
+    <%= image_tag 'cc-discover.png', :class => 'credit_card' if payment.brand == 'Discover' %>
+    <%= image_tag 'cc-jcb.png', :class => 'credit_card' if payment.brand == 'JCB' %>
+    <%= image_tag 'cc-diners.png', :class => 'credit_card' if payment.brand == 'Diners Club' %>
+    <%= image_tag 'cc-credit.png', :class => 'credit_card' if payment.brand == 'Unknown' %>
+    •••• •••• •••• <%= payment.last4 %>
+    <% if payment.cvc_check == "pass" %>
+      <span class="label label-success pull-right">cvc</span>
+    <% else %>
+      <span class="label label-danger pull-right">cvc</span>
+    <% end %>
+
+    <span class="label label-default pull-right" style="margin-right: 5px"><%= payment.exp_month %> / <%= payment.exp_year %></span> 
     </p>
+  <% end %>
   </div>
 </div>

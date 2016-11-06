@@ -1,15 +1,12 @@
-<div class="container">
-  <%= image_tag 'facebook-open-graph.jpg', class: "cover-image"  %><br/>
+<div class="container venue_displayed">
+  <%= image_tag(@venue.venue_picture.url, class: "cover-image") if @venue.venue_picture.file %><br/>
 
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-9 venue_menu">
       <h1><%= @venue.name %></h1>
-      <p class="lead"><%= @venue.title %></p>
-      <hr/>
-      <p><%= @venue.description %></p>
-      <hr/>
-    </div>
-    <div class="col-lg-8 venue_menu">
+      <p class="title lead"><%= @venue.title %></p>
+      <p class="description"><%= @venue.description %></p>
+
       <% @venue.live_product_groups.each do |product_group| %>
         <div class="product_group">
           <div class="header">
@@ -82,35 +79,17 @@
         </div>
       <% end %>
     </div>
-  </div>
-</div>
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <p class="navbar-text">
-          <span class="venue-ball"></span>
-          Ouvert: 12.00 - 19.00
-          <!-- ToDo opening time -->
-          
-          <span class="spacer"></span>
-          <span class="venue-ball disabled"></span>
-          Livre: 13.00 - 15.00
-          <!-- ToDo delivery time -->
-          
-          <span class="spacer"></span>
-          <%= fa_icon "map-marker" %> 
-          <%= @venue.street %>, <%= @venue.city_name %>
-
-          <span class="spacer"></span>
-          <%= fa_icon "phone" %> 
-          <%= @venue.phone %>
-        </p>
-      </div>
-      <div class="col-lg-3">
-        <a href="" class="pull-right btn navbar-btn btn-primary">Commander 47.50 CHF</a>
-      </div>
+    <div class="col-lg-3 venue_info">
+      <p><span class="venue-ball"></span> Ouvert de 12.00 à 19.00</p>
+      <p><span class="venue-ball disabled"></span> Livre de 13.00 à 18.00</p>
+      <hr />
+      <p><%= fa_icon "map-marker" %> <%= @venue.street %>, <%= @venue.city_name %></p>
+      <p><%= fa_icon "phone" %>  <%= @venue.phone %></p>
+      <hr />
+      <a href="" class="btn btn-block btn-primary">Commander 47.50 CHF</a>
+      <hr />
+      <p class="allergies small">Si vous avez des allergies ou autres restrictions alimentaires, veuillez contctez le restaurant. Le restaurant vous fournirar des inforamtions relative aux plats sur demande.
+      </p>
     </div>
   </div>
-</nav>
+</div>

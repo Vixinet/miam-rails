@@ -1,3 +1,25 @@
 var _convertTwoDecimals = function(f) {
   return parseFloat(Math.round(f * 100) / 100).toFixed(2);
 }
+
+$(document).on("turbolinks:load", function() {
+  toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "positionClass": "toast-top-right",
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
+
+  $(document).on('click', '.intercom', function(event) {
+    // event.preventDefault();
+    // alert(1);
+  })
+});

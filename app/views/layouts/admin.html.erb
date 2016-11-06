@@ -43,21 +43,11 @@
         </div>
       </div>
     </nav>
-
-    <header class="container-fluid">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-    </header>
-
+    
     <main class="container-fluid">
       <%= yield %>
     </main>
 
-    <% if Rails.env.development? %>
-    <footer class="container-fluid">
-        <%= debug(params)  %>
-    </footer>
-    <% end %>
+    <%= render partial: 'layouts/handle_flashes' %>
   </body>
 </html>
