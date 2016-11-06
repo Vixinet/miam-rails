@@ -49,7 +49,7 @@ $(document).on "turbolinks:load", ->
 
   $("#new_opt_in").on "ajax:success", ->
     $("#new_opt_in").html "<p class=\"lead\">Inscription prise en compte. &#128077;</p>"
-    # fbq('track', 'Lead')
+    fbq('track', 'Lead')
   
   $("#new_opt_in").on "ajax:error", ->
     toastr.error("&#128557; Une erreur est survenue. Êtes-vous certain d'avoir indiqué email valide?", {timeOut: 10000})
