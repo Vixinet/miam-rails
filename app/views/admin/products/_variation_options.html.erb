@@ -7,15 +7,9 @@
       <th>Allow multi choices</th>
       <th></th>
     </tr>
-    <% variation_options.order(:order).each do |variation_option| %>
+    <% variation_options.each do |variation_option| %>
       <tr>
-        <td>
-          <span class="label label-default"><%= variation_option.order %></span>
-          <%= variation_option.label %>
-          <% if variation_option.default? %>
-          <span class="label label-info">default</span>
-          <% end %>
-        </td>
+        <td><%= variation_option.label %></td>
         <td><%= variation_option.price_variation %> CHF</td>
         <td>
           <%= variation_option.allow_multi_choices? ? 'yes' : 'no' %>

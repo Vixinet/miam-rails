@@ -53,6 +53,6 @@ class Admin::ProductVariationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_variation_params
-      params.require(:product_variation).permit(:label, :allow_multi_choices, :multi_choice_limit, :order)
+      params.require(:product_variation).permit(:label, :allow_multi_choices, :multi_choice_limit)
     end
 end

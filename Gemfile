@@ -21,9 +21,6 @@ gem 'will_paginate'
 gem "typedjs-rails", "~> 1.0.4"
 gem 'toastr-rails'
 gem 'modernizr-rails'
-gem "font-awesome-rails"
-
-gem 'geocoder'
 
 # External services
 gem "intercom-rails"

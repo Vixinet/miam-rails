@@ -5,9 +5,6 @@ class AdminController < ApplicationController
   def home
   	@opt_ins = OptIn.group('date(created_at)').count(:email)
     render 'home'
-
-    # ProductVariation.all.each { |x| x.save! }
-    # VariationOption.all.each { |x| x.save! }
   end
 
 end

@@ -9,7 +9,7 @@
       <th>Variations</th>
       <th></th>
     </tr>
-    <% products.order(:order).each do |product| %>
+    <% products.each do |product| %>
       <tr>
         <td>
           <% if product.live? %>
