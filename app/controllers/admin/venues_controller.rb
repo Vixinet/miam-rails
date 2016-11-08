@@ -31,7 +31,9 @@ class Admin::VenuesController < ApplicationController
       flash[:success] = 'Venue was successfully created.'
       redirect_to admin_venue_url(@venue)
     else
-      flash[:danger] = 'Venue was *NOT* successfully created.'
+      puts "**************************************"
+      puts @venue.errors.messages
+      flash[:error] = 'Venue was *NOT* successfully created.'
       render :new
     end
   end
@@ -39,10 +41,13 @@ class Admin::VenuesController < ApplicationController
   # PATCH/PUT /admin/venues/1
   def update
     if @venue.update(venue_params)
+      puts "**************************************"
       flash[:success] = 'Venue was successfully updated.'
       redirect_to admin_venue_url(@venue)
     else
-      flash[:danger] = 'Venue was *NOT* successfully updated.'
+      puts "**************************************"
+      puts @venue.errors.messages
+      flash[:error] = 'Venue was *NOT* successfully updated.'
       render :edit
     end
   end
@@ -56,11 +61,11 @@ class Admin::VenuesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_venue
-      @venue = Venue.find(params[:id])
+      @venue = Venue.find_by_slug(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def venue_params
-      params.require(:venue).permit(:venue_picture, :venue_thumbnail_picture, :status, :name, :title, :phone, :website, :merchant_id, :accepts_delivery, :accepts_take_away, :city_id, :street, :city_name, :description)
+      params.require(:venue).permit(:slug, :venue_picture, :venue_thumbnail_picture, :status, :name, :title, :phone, :website, :merchant_id, :accepts_delivery, :accepts_take_away, :city_id, :street, :city_name, :description)
     end
 end

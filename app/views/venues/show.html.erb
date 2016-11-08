@@ -86,7 +86,11 @@
       <p><%= fa_icon "map-marker" %> <%= @venue.street %>, <%= @venue.city_name %></p>
       <p><%= fa_icon "phone" %>  <%= @venue.phone %></p>
       <hr />
-      <a href="" class="btn btn-block btn-primary">Commander 47.50 CHF</a>
+      <%= form_for(@order) do |f| %>
+        <%= f.text_field :venue_id %>
+        <%= f.hidden_field :products %>
+        <%= f.submit "Commander", :class => 'btn btn-block btn-primary' %>
+      <% end %>
       <hr />
       <p class="allergies small">Si vous avez des allergies ou autres restrictions alimentaires, veuillez contctez le restaurant. Le restaurant vous fournirar des inforamtions relative aux plats sur demande.
       </p>

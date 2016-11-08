@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
+  
+  require 'ext/string'
+  
   protect_from_forgery with: :exception
+  
   include SessionsHelper
   
   if Rails.env == "staging"

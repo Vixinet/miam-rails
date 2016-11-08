@@ -1,0 +1,59 @@
+<div class="well">
+  <%= form_for(@user, :url => (@user.persisted? ? :account_edit : :signup), :html => { class: 'form-horizontal' }) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name, "Nom *", class:"col-sm-3 control-label text-right" %>
+      <div class="col-sm-6">
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, "Email *", class:"col-sm-3 control-label text-right" %>
+      <div class="col-sm-6">
+        <%= f.email_field :email, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :phone, "Téléphone *", class:"col-sm-3 control-label text-right" %>
+      <div class="col-sm-6">
+        <%= f.phone_field :phone, class:"form-control" %>
+      </div>
+    </div>
+
+    <% unless @user.provider %>
+      <div class="form-group">
+        <%= f.label :password, "Mot de passe *", class:"col-sm-3 control-label text-right" %>
+        <div class="col-sm-6">
+          <%= f.password_field :password, class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirmation *", class:"col-sm-3 control-label text-right" %>
+        <div class="col-sm-6">
+          <%= f.password_field :password_confirmation, class:"form-control" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :profile_picture, "Photo de profil", class:"col-sm-3 control-label text-right" %>
+      <div class="col-sm-6">
+        <% if @user.profile_picture.url %>
+          <%= image_tag @user.profile_picture.url %>
+        <% end %>
+        <%= f.file_field :profile_picture %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-3"> </div>
+      <div class="col-sm-6">
+        <%= f.submit value: "Enregistrer", class: 'btn btn-primary' %>
+        <%= link_to "Annuler", root_url, class: 'btn btn-default' %>
+      </div>
+    </div>
+  <% end %>
+</div>

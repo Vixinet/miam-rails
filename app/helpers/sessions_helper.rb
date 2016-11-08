@@ -40,8 +40,17 @@ module SessionsHelper
 
   #filters
   
-  def not_logged_in_user
-    redirect_to account_url unless !logged_in?
+  def not_logged_in_user_only
+    redirect_to account_url if logged_in?
+  end
+  
+  def info_filled_in?
+    !(current_user.email.blank? || current_user.phone.blank?)
+  end
+
+  def logged_in_user_and_fill_in
+    redirect_to signup_url unless logged_in?
+    redirect_to account_edit_url if logged_in? && !info_filled_in?
   end
 
   def logged_in_user

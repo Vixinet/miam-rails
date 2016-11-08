@@ -10,7 +10,11 @@
       <%= link_to image_tag('logo-white@0.25x.png'), root_url, class: 'navbar-brand' %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Restaurants", root_url %></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Support", support_path %></li>
       <% if logged_in? %>
         <li>
           <%= link_to account_path do %>

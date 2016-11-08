@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
-  before_action :logged_in_user
-  before_action :set_address, only: [:edit, :update, :destroy, :default]
+  before_action :logged_in_user_and_fill_in
+  before_action :set_address, only: [:edit, :update, :destroy]
 
   layout 'account'
 
@@ -32,7 +32,7 @@ class AddressesController < ApplicationController
     @address.user_id = current_user.id
 
     if @address.save
-      flash[:info] = 'Address ajoutée!'
+      flash[:success] = 'Address ajoutée!'
       redirect_to addresses_url
     else
       flash[:error] = 'Un problème est survenu. Merci de controller votre saisie.'
@@ -44,7 +44,7 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1
   def update
     if @address.update(address_params)
-      flash[:info] = 'Address éditée!'
+      flash[:success] = 'Address éditée!'
       redirect_to addresses_url
     else
       flash[:error] = 'Un problème est survenu. Merci de controller votre saisie.'

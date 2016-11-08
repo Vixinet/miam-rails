@@ -5,26 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <html>
   <head>
-    <title>Miam - Cliquez, c'est livré</title>
-    
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Miam s'engage à vous livrez les plats de votre restaurant préféré directement au seuil de votre porte. Avec nous, les plats de votre restaurant préféré, chauds et en moins de 45 minutes chez vous.">
-    
-    <meta property="fb:app_id" content="1831212113764032">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.miam.ch">
-    <meta property="og:locale" content="fr_fr">
-    <meta property="og:title" content="Cliquez, c'est livré">
-    <meta property="og:description" content="Miam s'engage à vous livrez les plats de votre restaurant préféré directement au seuil de votre porte. Avec nous, les plats de votre restaurant préféré, chauds et en moins de 45 minutes chez vous.">
-    <meta property="og:image" content="<%= asset_url 'facebook-open-graph.jpg' %>">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.miam.ch">
-    <meta name="twitter:title" content="Cliquez, c'est livré">
-    <meta name="twitter:description" content="Miam s'engage à vous livrez les plats de votre restaurant préféré directement au seuil de votre porte. Avec nous, les plats de votre restaurant préféré, chauds et en moins de 45 minutes chez vous.">
-    <meta name="twitter:image:src" content="<%= asset_url 'facebook-open-graph.jpg' %>">
+    <%= render partial: 'layouts/meta_tags' %>
 
     <%= favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
     <%= favicon_link_tag 'favicon.ico' %>

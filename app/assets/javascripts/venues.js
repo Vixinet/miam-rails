@@ -269,6 +269,8 @@ $(document).on("turbolinks:load", function() {
     }
   }
 
+  // Events
+
   $('.products')
 
   .on('click', '[data-action="_product_toggle"]', function(event) {
@@ -306,6 +308,66 @@ $(document).on("turbolinks:load", function() {
     event.preventDefault();
     toggle_option(_get_option(this));
   })
+
+  $(document)
+
+  .on('submit.rails', '.new_order', function(event) {
+    var products = [];
+
+    $('.product[data-quantity != "0"]').each(function(index, product) {
+      var $product = $(product);
+
+      var variations = [];
+
+      $product.find('.product_variation').each(function(index, variation) {
+        $variation = $(variation);
+
+        $options = $variation.find('.variation_option[data-quantity != "0"]');
+
+        if( $options.length == 0)
+          return;
+
+        var options = [];
+
+        $options.each(function(index, option) {
+          $option = $(option);
+          options.push({
+            id: $option.data('id'),
+            quantity: $option.data('quantity')
+          })
+        });
+
+        variations.push({
+          id: $variation.data('id'),
+          options: options
+        });
+      });
+
+      console.log($product);
+
+      products.push({
+        id: $product.data('id'),
+        quantity: $product.data('quantity'),
+        variations: variations
+      });
+
+    });
+
+    if( products.length == 0 ) {
+      event.preventDefault();
+      toastr.error("Vous n'avez pas selectioné de produits.")
+      var form = $(this);
+      setTimeout(function(){  
+        $.rails.enableFormElements(form) 
+      }, 100);
+      return false;
+    }
+
+    $('#order_products').val(JSON.stringify(products)).appendTo(this);
+    
+  });
+
+  // Init
 
   $('.products .product').each(function(index, product) {
     refresh_ui($(product));

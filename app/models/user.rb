@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   mount_uploader :profile_picture, ProfilePictureUploader
 
-  before_save { self.email = email.downcase }
-  
+  before_save { self.email = email.downcase if self.email}
   before_save :set_invitation_code
+
   after_create :create_stripe_customer
   after_save :check_stripe_customer
   
@@ -40,6 +40,21 @@ class User < ApplicationRecord
 
   def shown_addresses
     addresses.where(:status => :online)
+  end
+  
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.remote_profile_picture_url = auth.info.image
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      pass = SecureRandom.uuid
+      user.password = pass
+      user.password_confirmation = pass
+      user.save
+    end
   end
 
   def remember

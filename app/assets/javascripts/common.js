@@ -17,9 +17,4 @@ $(document).on("turbolinks:load", function() {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
   }
-
-  $(document).on('click', '.intercom', function(event) {
-    // event.preventDefault();
-    // alert(1);
-  })
 });

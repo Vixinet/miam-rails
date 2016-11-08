@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105210118) do
+ActiveRecord::Schema.define(version: 20161108182822) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 20161105210118) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "address_id"
+    t.float    "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "venue_id"
+    t.index ["venue_id"], name: "index_orders_on_venue_id"
+  end
+
   create_table "product_groups", force: :cascade do |t|
     t.string   "label"
     t.string   "description"
@@ -92,15 +102,19 @@ ActiveRecord::Schema.define(version: 20161105210118) do
     t.string   "email"
     t.string   "remember_digest"
     t.string   "password_digest"
-    t.boolean  "admin",           default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.float    "credits",         default: 0.0
+    t.boolean  "admin",            default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.float    "credits",          default: 0.0
     t.string   "invitation_code"
     t.string   "phone"
     t.string   "name"
     t.string   "stripe_id"
     t.string   "profile_picture"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   create_table "variation_options", force: :cascade do |t|
@@ -135,6 +149,7 @@ ActiveRecord::Schema.define(version: 20161105210118) do
     t.string   "description"
     t.string   "venue_picture"
     t.string   "venue_thumbnail_picture"
+    t.string   "slug"
     t.index ["city_id"], name: "index_venues_on_city_id"
     t.index ["merchant_id"], name: "index_venues_on_merchant_id"
   end

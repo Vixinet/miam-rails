@@ -11,8 +11,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'bcrypt'
 gem 'httparty'
-gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
-gem 'carrierwave-imagesorcery'
 
 # Front End
 gem 'jquery-rails', '~> 4.2.1'
@@ -28,6 +26,10 @@ gem 'popupoverlay-rails'
 gem 'bootstrap-social-rails'
 
 gem 'geocoder'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'carrierwave-imagesorcery'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # External services
 gem "intercom-rails"

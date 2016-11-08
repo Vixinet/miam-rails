@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :logged_in_user
+  before_action :logged_in_user_and_fill_in
 
   layout 'account'
 
@@ -27,7 +27,7 @@ class PaymentsController < ApplicationController
         :name => current_user.name
       })
 
-      flash[:info] = 'Address ajoutée!'
+      flash[:success] = 'Address ajoutée!'
       redirect_to payments_url
     # rescue Stripe::CardError => e
       # Since it's a decline, Stripe::CardError will be caught

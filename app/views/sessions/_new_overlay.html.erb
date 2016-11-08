@@ -2,7 +2,7 @@
   <%= form_for(:session, url: login_path, remote: true) do |f| %>
 
       <div class="form-group">
-        <%= link_to "#", :class => 'btn btn-facebook btn-social btn-block' do %>
+        <%= link_to "#", :id => 'facebook_login', :class => 'btn btn-facebook btn-social btn-block' do %>
           <%= fa_icon :facebook %> Utiliser facebook
         <% end %>
       </div>

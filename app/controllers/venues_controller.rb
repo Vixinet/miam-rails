@@ -11,11 +11,12 @@ class VenuesController < ApplicationController
 
   # GET /venues/1
   def show
+    @order = Order.new(:venue => @venue)
   end
 
   private
     def set_venue
-      @venue = Venue.find(params[:id])
+      @venue = Venue.find_by_slug(params[:id])
     end
 
 end
