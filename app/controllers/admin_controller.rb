@@ -7,10 +7,10 @@ class AdminController < ApplicationController
     render 'home'
 
     # ProductVariation.all.each { |x| x.save! }
-    Venue.all.each { |x| 
-    	puts x.slug
-    	x.save!
-    }
+    # Venue.all.each { |x| 
+    # 	puts x.slug
+    # 	x.save!
+    # }
     # VariationOption.all.each { |x| x.save! }
   end
 
