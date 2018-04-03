@@ -10,8 +10,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    puts "***************************************************************************"
-    
     @user = current_user
   end
 
