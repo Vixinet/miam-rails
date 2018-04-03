@@ -12,11 +12,15 @@ class OrdersController < ApplicationController
   end
 
   # POST /orders
-  def create
+  def confirmation
     puts "*********************************************************************************************************"
     puts order_params
     puts order_params.inspect
     puts "*********************************************************************************************************"
+    
+  end
+
+  def create
     @order = Order.new()
 
     respond_to do |format|
@@ -47,6 +51,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:venue_id, :products)
+      params.require(:order).permit(:venue_id, :products, :address, :)
     end
 end

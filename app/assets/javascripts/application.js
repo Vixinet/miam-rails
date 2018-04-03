@@ -15,6 +15,7 @@
 //= require popupoverlay
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require turbolinks.redirect
 //= require toastr
 //= require typed
 //= require google_analytics
